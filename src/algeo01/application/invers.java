@@ -31,7 +31,7 @@ class invers {
         int sign = 1;
         for (int i = 0; i < matrix.length; i++){
             for (int j = 0; j < matrix.length; j++){
-                adj[j][i] = (sign)*(det.determinantOfMatrix(cofactor(matrix, i, j), matrix.length-1));
+                adj[j][i] = (sign)*(det.determinant(cofactor(matrix, i, j), matrix.length-1));
                 sign = -sign;
             }
         }
@@ -42,7 +42,7 @@ class invers {
         Double [][] adj = adjoint(matrix);
         for (int i = 0; i<matrix.length; i++){
             for (int j = 0; j<matrix.length; j++){
-                inv [i][j] = 1/det.determinantOfMatrix(matrix, matrix.length)*adj[i][j];
+                inv [i][j] = 1/det.determinant(matrix, matrix.length)*adj[i][j];
             }
         }
         return inv;

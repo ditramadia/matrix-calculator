@@ -19,7 +19,7 @@ public class det {
 
 	/* Recursive function for finding determinant
 	of matrix. n is current dimension of matrix[][]. */
-	static Double determinantOfMatrix(Double matrix[][], int a)
+	static Double determinant(Double matrix[][], int a)
 	{
 		Double D = 0.0;
 
@@ -36,7 +36,7 @@ public class det {
 		for (int i = 0; i < a; i++) {
 			// Getting Cofactor of matrix[0][i]
 			getCofactor(matrix, temp, 0, i, a);
-			D += s * matrix[0][i] * determinantOfMatrix(temp, a - 1);
+			D += s * matrix[0][i] * determinant(temp, a - 1);
 
 			s = -s;
 		}
@@ -77,6 +77,6 @@ public class det {
 
 		System.out.print("Determinant "
 						+ "of the matrix is : "
-						+ determinantOfMatrix(matrix, a));
+						+ determinant(matrix, a));
 	}
 }
