@@ -1,3 +1,4 @@
+package algeo01.function;
 import java.util.*;
 public class Determinant {
 
