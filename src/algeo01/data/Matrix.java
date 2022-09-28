@@ -76,7 +76,8 @@ public class Matrix {
         }
     }
 
-    // Arithmetic Operation
+    // Arithmetic Operation Methods
+    // Add 2 Matrix's
     public Matrix addMatrix(Matrix M){
         Matrix result = new Matrix(this.nRow, this.nCol);
         for(int i = 0; i < this.nRow; i++){
@@ -86,6 +87,7 @@ public class Matrix {
         }
         return result;
     }
+    // Subtract 2 Matrix's
     public Matrix subtractMatrix(Matrix M){
         Matrix result = new Matrix(this.nRow, this.nCol);
         for(int i = 0; i < result.nRow; i++){
@@ -95,6 +97,7 @@ public class Matrix {
         }
         return result;
     }
+    // Multiply 2 Matrix's
     public Matrix multiplyMatrix(Matrix M){
         if (this.nCol != M.nRow){
             return M;
@@ -109,6 +112,7 @@ public class Matrix {
         }
         return result;
     }
+    // Multiply Matrix By A Constant
     public Matrix multiplyByConst(double x){
         Matrix result = new Matrix(this.nRow, this.nCol);
         for(int i = 0; i < result.nRow; i++){
@@ -120,9 +124,11 @@ public class Matrix {
     }
 
     // Relational Operation Methods
+    // Is Matrix Size Equal?
     public boolean isMatrixSizeEqual(Matrix M){
         return this.nRow == M.nRow && this.nCol == M.nCol;
     }
+    // Is Matrix Equal?
     public boolean isMatrixEqual(Matrix M){
         if (!isMatrixSizeEqual(M)){
             return false;
@@ -137,12 +143,39 @@ public class Matrix {
         return true;
     }
 
-    // Test Field
-    public static void main(String[] args) {
-        Matrix matrix1 = new Matrix(3, 3);
-        Matrix matrix2 = new Matrix(3, 3);
-        matrix1.readMatrix();
-        matrix2.readMatrix();
-        System.out.println(matrix1.isMatrixEqual(matrix2));
+    // Test Towards Matrix Methods
+    // Is Matrix Square?
+    public boolean isSquare(){
+        return this.nCol == this.nRow;
+    }
+    // Is Matrix Identity?
+    public boolean isIdentity(){
+        if (!isSquare()){
+            return false;
+        }
+        for (int i = 0; i < nRow; i++){
+            for (int j = 0; j < nCol; j++){
+                if (i == j){
+                    if (tab[i][j] != 1){
+                        return false;
+                    }
+                } else {
+                    if (tab[i][j] != 0){
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+    // Transpose
+    public Matrix transpose(){
+        Matrix result = new Matrix(this.nRow, this.nCol);
+        for(int i = 0; i < result.nRow; i++){
+            for(int j = 0; j < result.nCol; j++){
+                result.setElmt(j, i, getElmt(i, j));
+            }
+        }
+        return result;
     }
 }
