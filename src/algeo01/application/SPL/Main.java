@@ -1,8 +1,8 @@
-package algeo01.application;
+package algeo01.application.SPL;
 
 import java.util.Scanner;
 
-public class SPLApp {
+public class Main {
     public static void main(String[] args) {
         // Available menus
         final String[] menus = new String[]{
@@ -58,7 +58,7 @@ public class SPLApp {
                 break;
             case 5:
                 // Back
-                Main.main(null);
+                algeo01.application.Main.main(null);
                 break;
         }
     }

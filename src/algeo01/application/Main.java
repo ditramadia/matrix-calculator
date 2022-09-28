@@ -45,7 +45,7 @@ public class Main {
         // Calling Another Application
         switch (selectedMenu) {
             case 1:
-                SPLApp.main(null);
+                algeo01.application.SPL.Main.main(null);
                 break;
             case 2:
                 // Call DeterminanApp
