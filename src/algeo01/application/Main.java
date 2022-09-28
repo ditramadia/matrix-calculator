@@ -54,6 +54,8 @@ public class Main {
                 // Call Regresi Linear Berganda
                 break;
             case 7:
+                // Exit JVM
+                System.out.println("Program berhasil dihentikan");
                 System.exit(0);
                 break;
         }
