@@ -1,7 +1,7 @@
 import java.util.*;
-public class det {
+public class Determinant {
 
-	static void getCofactor(Double matrix[][], Double temp[][],int p, int q, int n)
+	static void getCof(Double matrix[][], Double temp[][],int p, int q, int n)
 	{
 		int i = 0, j = 0;
 		for (int row = 0; row < n; row++) {
@@ -16,10 +16,7 @@ public class det {
 			}
 		}
 	}
-
-	/* Recursive function for finding determinant
-	of matrix. n is current dimension of matrix[][]. */
-	static Double determinant(Double matrix[][], int a)
+	static Double det(Double matrix[][], int a)
 	{
 		Double D = 0.0;
 
@@ -35,8 +32,8 @@ public class det {
 
 		for (int i = 0; i < a; i++) {
 			// Getting Cofactor of matrix[0][i]
-			getCofactor(matrix, temp, 0, i, a);
-			D += s * matrix[0][i] * determinant(temp, a - 1);
+			getCof(matrix, temp, 0, i, a);
+			D += s * matrix[0][i] * det(temp, a - 1);
 
 			s = -s;
 		}
@@ -77,6 +74,6 @@ public class det {
 
 		System.out.print("Determinant "
 						+ "of the matrix is : "
-						+ determinant(matrix, a));
+						+ det(matrix, a));
 	}
 }

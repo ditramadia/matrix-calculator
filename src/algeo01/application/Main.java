@@ -47,11 +47,11 @@ public class Main {
                 // Call SPLApp
                 break;
             case 2:
-                det.main(args);
+                Determinant.main(args);
                 // Call DeterminanApp
                 break;
             case 3:
-                
+
                 // Call MatrikBalikanApp
                 break;
             case 4:

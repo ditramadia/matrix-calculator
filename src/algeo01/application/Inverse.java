@@ -1,7 +1,7 @@
 import algeo01.*;
 
 
-class invers {
+class Inverse {
     static Double [][] cofactor (Double matrix [][], int i, int j){
         Double [][] temp = new Double [matrix.length-1][matrix.length-1];
         int x = 0;
@@ -31,7 +31,7 @@ class invers {
         int sign = 1;
         for (int i = 0; i < matrix.length; i++){
             for (int j = 0; j < matrix.length; j++){
-                adj[j][i] = (sign)*(det.determinant(cofactor(matrix, i, j), matrix.length-1));
+                adj[j][i] = (sign)*(Determinant.det(cofactor(matrix, i, j), matrix.length-1));
                 sign = -sign;
             }
         }
@@ -42,7 +42,7 @@ class invers {
         Double [][] adj = adjoint(matrix);
         for (int i = 0; i<matrix.length; i++){
             for (int j = 0; j<matrix.length; j++){
-                inv [i][j] = 1/det.determinant(matrix, matrix.length)*adj[i][j];
+                inv [i][j] = 1/Determinant.det(matrix, matrix.length)*adj[i][j];
             }
         }
         return inv;
