@@ -1,4 +1,4 @@
-package algeo01.application;
+
 import java.util.*;
 
 public class Main {
@@ -47,6 +47,7 @@ public class Main {
                 // Call SPLApp
                 break;
             case 2:
+                det.main(args);
                 // Call DeterminanApp
                 break;
             case 3:
