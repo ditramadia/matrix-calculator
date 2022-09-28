@@ -63,7 +63,7 @@ public class Main {
                 break;
             case 7:
                 // Exit JVM
-                System.out.println("Program berhasil dihentikan");
+                System.out.println("Program dihentikan");
                 System.exit(0);
                 break;
         }
