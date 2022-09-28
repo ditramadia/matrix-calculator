@@ -3,8 +3,6 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
         // Available menus
         final String[] menus = new String[]{
                 "Sistem Persamaan Linear",
@@ -13,7 +11,7 @@ public class Main {
                 "Interpolasi Polinom",
                 "Interpolasi Bicubic",
                 "Regresi Linier Berganda",
-                "Keluar"
+                "Keluar",
         };
 
         // Display menu
@@ -22,15 +20,25 @@ public class Main {
             System.out.println((i + 1) + ". " + menus[i]);
         }
         // Asking for user input
-        System.out.print("Pilih menu: ");
-        int selectedMenu = sc.nextInt();
-        boolean isSelectedValid = (0 < selectedMenu) && (selectedMenu <= menus.length);
+        int selectedMenu = 0;
+        String strSelectedMenu;
+        Scanner input = new Scanner(System.in);
         // Input validation
-        while (!isSelectedValid){
-            System.out.println("Menu tidak tersedia. Harap pilih kembali.");
+        boolean isInputInteger = false, isInputAvail = false;
+        while (!isInputAvail || !isInputInteger) {
             System.out.print("Pilih menu: ");
-            selectedMenu = sc.nextInt();
-            isSelectedValid = (0 < selectedMenu) && (selectedMenu <= menus.length);
+            strSelectedMenu = input.nextLine();
+            // Input must be an integer
+            try{
+                selectedMenu = Integer.parseInt(strSelectedMenu);
+                isInputInteger = true;
+
+                // Input must be available
+                isInputAvail = (0 < selectedMenu && selectedMenu <= menus.length) ? true : false;
+            } catch(NumberFormatException e) {}
+            if(!isInputAvail || !isInputInteger){
+                System.out.println("Menu tidak tersedia");
+            }
         }
 
         // Calling Another Application
