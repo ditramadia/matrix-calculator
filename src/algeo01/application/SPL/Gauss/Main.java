@@ -79,10 +79,6 @@ public class Main {
                             }
                             nonZeroIdx++;
                         }
-                        if (m.getElmt(nonZeroIdx, j) == 0) {
-                            System.out.println("Tidak dapat diselesaikan");
-                            break;
-                        }
                     }
                     // Tranforms to 1
                     if (m.getElmt(i, j) != 1) {
@@ -107,7 +103,29 @@ public class Main {
             m.displayMatrix();
             System.out.println("======================");
         }
-//        m.displayMatrix();
-//        System.out.println("======================");
+
+        // Decides if problem is feasible
+        boolean hasManySolutions = true;
+        for(int j = 0; j < m.getNCol(); j++){
+            if (m.getElmt(m.getNRow() - 1, j) != 0){
+                hasManySolutions = false;
+            }
+        }
+
+        boolean hasNoSolution = true;
+        for(int j = 0; j < m.getNCol() - 1; j++){
+            if (m.getElmt(m.getNRow() - 1, j) != 0){
+                hasNoSolution = false;
+            }
+        }
+
+        if (!hasNoSolution && !hasManySolutions) {
+            System.out.println("Ada gening");
+        } else if (hasManySolutions) {
+            System.out.println("Banyak solusi.");
+        } else if (hasNoSolution) {
+            System.out.println("Tidak ada solusi.");
+        }
+
     }
 }
