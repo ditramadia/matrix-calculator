@@ -194,11 +194,4 @@ public class Matrix {
         setRow(row1, getRow(row2));
         setRow(row2, temp);
     }
-
-    public static void main(String[] args) {
-        Matrix m1 = new Matrix(3, 3);
-        m1.readMatrix();
-        m1.swap(1, 2);
-        m1.displayMatrix();
-    }
 }
