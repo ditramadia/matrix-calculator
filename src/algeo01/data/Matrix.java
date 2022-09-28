@@ -96,11 +96,14 @@ public class Matrix {
         return result;
     }
     public Matrix multiplyMatrix(Matrix M){
+        if (this.nCol != M.nRow){
+            return M;
+        }
         Matrix result = new Matrix(this.nRow, M.nCol);
         for(int i = 0; i < result.nRow; i++){
             for(int j = 0; j < result.nCol; j++){
                 for(int k = 0; k < M.nRow; k++){
-                    result.tab[i][j] += this.tab[i][k] * M.tab[k][j];
+                    result.tab[i][j] += this.tab[i][k] * M.getElmt(k, j);
                 }
             }
         }
@@ -116,14 +119,30 @@ public class Matrix {
         return result;
     }
 
+    // Relational Operation Methods
+    public boolean isMatrixSizeEqual(Matrix M){
+        return this.nRow == M.nRow && this.nCol == M.nCol;
+    }
+    public boolean isMatrixEqual(Matrix M){
+        if (!isMatrixSizeEqual(M)){
+            return false;
+        }
+        for (int i = 0; i < this.nRow; i++){
+            for (int j = 0; j < this.nCol; j++){
+                if (this.tab[i][j] != M.getElmt(i, j)){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
     // Test Field
     public static void main(String[] args) {
-        Matrix matrix1 = new Matrix(4, 3);
-//        Matrix matrix2 = new Matrix(3, 4);
-        Matrix matrix3 = new Matrix(4, 4);
+        Matrix matrix1 = new Matrix(3, 3);
+        Matrix matrix2 = new Matrix(3, 3);
         matrix1.readMatrix();
-//        matrix2.readMatrix();
-        matrix3 = matrix1.multiplyByConst(4);
-        matrix3.displayMatrix();
+        matrix2.readMatrix();
+        System.out.println(matrix1.isMatrixEqual(matrix2));
     }
 }
