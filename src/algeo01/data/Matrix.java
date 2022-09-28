@@ -38,11 +38,11 @@ public class Matrix {
 
     // METHODS //
     // Getter and Setter Methods
-    // Get Rows
+    // Get N Rows
     public int getNRow(){
         return this.nRow;
     }
-    // Get Cols
+    // Get N Cols
     public int getNCol(){
         return this.nCol;
     }
@@ -53,6 +53,14 @@ public class Matrix {
     // Set Element
     public void setElmt(int i, int j, double val){
         this.tab[i][j] = val;
+    }
+    // Get Row
+    public double[] getRow(int i){
+        return this.tab[i];
+    }
+    // Set Row
+    public void setRow(int rowIdx, double[] row){
+        this.tab[rowIdx] = row;
     }
 
     // Input Output Methods
@@ -168,6 +176,8 @@ public class Matrix {
         }
         return true;
     }
+
+    // Transform Methods
     // Transpose
     public Matrix transpose(){
         Matrix result = new Matrix(this.nRow, this.nCol);
@@ -177,5 +187,18 @@ public class Matrix {
             }
         }
         return result;
+    }
+    // Swap Rows
+    public void swap(int row1, int row2){
+        double[] temp = getRow(row1);
+        setRow(row1, getRow(row2));
+        setRow(row2, temp);
+    }
+
+    public static void main(String[] args) {
+        Matrix m1 = new Matrix(3, 3);
+        m1.readMatrix();
+        m1.swap(1, 2);
+        m1.displayMatrix();
     }
 }
