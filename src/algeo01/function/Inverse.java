@@ -1,7 +1,7 @@
 package algeo01.function;
 
 
-class Inverse {
+public class Inverse {
     static Double [][] cofactor (Double matrix [][], int i, int j){
         Double [][] temp = new Double [matrix.length-1][matrix.length-1];
         int x = 0;
@@ -37,7 +37,7 @@ class Inverse {
         }
         return adj;
     }
-    static Double [][] inverse(Double [][] matrix){
+    public static Double [][] inv(Double [][] matrix){
         Double [][] inv = new Double [matrix.length][matrix.length];
         Double [][] adj = adjoint(matrix);
         for (int i = 0; i<matrix.length; i++){
