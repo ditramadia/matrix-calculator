@@ -88,6 +88,7 @@ public class Matrix {
             for(int j = 0; j < nCol; j++){
                 this.tab[i][j] = sc.nextInt();;
             }
+            sc.close();
         }
 
         if (nRow == 0 && nCol == 0){
