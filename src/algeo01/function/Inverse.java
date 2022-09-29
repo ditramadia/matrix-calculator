@@ -1,5 +1,4 @@
 package algeo01.function;
-import algeo01.*;
 
 
 class Inverse {

@@ -76,5 +76,6 @@ public class Determinant {
 		System.out.print("Determinant "
 						+ "of the matrix is : "
 						+ det(matrix, a));
+	input.close();
 	}
 }
