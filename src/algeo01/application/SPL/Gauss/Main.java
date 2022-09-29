@@ -52,9 +52,9 @@ public class Main {
                 // m.setNCol(input.nextInt());
                 m.setNCol(4); // test
                 // m.readMatrix();
-                double[] row1 = new double[]{0, 2, 1, 4}; // test
-                double[] row2 = new double[]{1, 1, 2, 6}; // test
-                double[] row3 = new double[]{2, 1, 1, 7}; // test
+                double[] row1 = new double[]{1, 1, 1, 0}; // test
+                double[] row2 = new double[]{2, 3, 1, 1}; // test
+                double[] row3 = new double[]{3, 1, 2, 1}; // test
                 m.setRow(0, row1); // test
                 m.setRow(1, row2); // test
                 m.setRow(2, row3); // test
@@ -66,6 +66,9 @@ public class Main {
         m.displayMatrix();
         System.out.println("======================");
 
+        // Decides if problem has many solutions
+        boolean hasManySolutions = m.getNCol() > m.getNRow() + 1;
+
         for (int i = 0; i < m.getNCol() - 1; i++) {
             for (int j = 0; j < m.getNRow(); j++) {
                 // Transform diagonal element
@@ -74,14 +77,14 @@ public class Main {
                     if (m.getElmt(i, j) == 0) {
                         int nonZeroIdx = i + 1;
                         while (m.getElmt(i, j) == 0 && nonZeroIdx < m.getNRow()) {
-                            if (m.getElmt(nonZeroIdx, j) != 0) {
+                            if (m.getElmt(nonZeroIdx, j) != 0 && i != m.getNRow() - 1) {
                                 algeo01.function.SwapRows.swap(m, i, nonZeroIdx);
                             }
                             nonZeroIdx++;
                         }
                     }
                     // Tranforms to 1
-                    if (m.getElmt(i, j) != 1) {
+                    if (m.getElmt(i, j) != 1 && m.getElmt(i, j) != 0) {
                         double multiplier = 1 / m.getElmt(i, j);
                         algeo01.function.MultplyRowByConst.mulRowByConst(m, i, multiplier);
                     }
@@ -104,27 +107,41 @@ public class Main {
             System.out.println("======================");
         }
 
-        // Decides if problem is feasible
-        boolean hasManySolutions = true;
-        for(int j = 0; j < m.getNCol(); j++){
-            if (m.getElmt(m.getNRow() - 1, j) != 0){
-                hasManySolutions = false;
+        // Decides if problem has many solutions
+        if (m.getElmt(m.getNRow() - 1, m.getNCol() - 1) == 0){
+            hasManySolutions = true;
+            for(int j = 0; j < m.getNCol() - 1; j++){
+                if (m.getElmt(m.getNRow() - 1, j) != 0){
+                    hasManySolutions = false;
+                }
             }
         }
 
-        boolean hasNoSolution = true;
-        for(int j = 0; j < m.getNCol() - 1; j++){
-            if (m.getElmt(m.getNRow() - 1, j) != 0){
-                hasNoSolution = false;
+        // Decides if problem has solution
+        boolean hasNoSolution = false;
+        if (m.getElmt(m.getNRow() - 1, m.getNCol() - 1) != 0){
+            hasNoSolution = true;
+            for(int j = 0; j < m.getNCol() - 1; j++){
+                if (m.getElmt(m.getNRow() - 1, j) != 0){
+                    hasNoSolution = false;
+                }
             }
         }
 
         if (!hasNoSolution && !hasManySolutions) {
-            System.out.println("Ada gening");
+            double[] solution = new double[m.getNCol() - 1];
+            for(int i = 0; i < solution.length; i++){
+                solution[solution.length - 1 - i] = m.getElmt(m.getNRow() - 1 - i, m.getNCol() - 1);
+            }
+            // Display solution
+            for(int i = 0; i < solution.length; i++){
+                System.out.print(solution[i] + " ");
+            }
+
         } else if (hasManySolutions) {
-            System.out.println("Banyak solusi.");
+            System.out.println("Solusi banyak/tidak hingga.");
         } else if (hasNoSolution) {
-            System.out.println("Tidak ada solusi.");
+            System.out.println("Solusi tidak ada.");
         }
 
     }
