@@ -4,19 +4,19 @@ import java.util.Scanner;
 
 public class Matrix {
     // FIELDS //
-    private final int nRow;
-    private final int nCol;
+    private int nRow = 0;
+    private int nCol = 0;
     private double[][] tab;
 
     // CONSTRUCTOR //
-    // Create Matrix
+    // Create Matrix with nRow and nCol
     public Matrix(int nRow, int nCol){
         this.nRow = nRow;
         this.nCol = nCol;
         this.tab = new double[nRow][nCol];
         for (int i = 0; i < nRow; i++){
             for (int j = 0; j < nCol; j++){
-                this.tab[i][j] = 0;
+                this.tab[i][j] = -999;
             }
         }
     }
@@ -35,6 +35,15 @@ public class Matrix {
     public Matrix(Matrix M){
         this(M.tab);
     }
+    // Create Matrix
+    public Matrix(){
+        this.tab = new double[50][50];
+        for (int i = 0; i < 50; i++){
+            for (int j = 0; j < 50; j++){
+                this.tab[i][j] = -999;
+            }
+        }
+    }
 
     // METHODS //
     // Getter and Setter Methods
@@ -42,9 +51,17 @@ public class Matrix {
     public int getNRow(){
         return this.nRow;
     }
+    // Set N Rows
+    public void setNRow(int nRow){
+        this.nRow = nRow;
+    }
     // Get N Cols
     public int getNCol(){
         return this.nCol;
+    }
+    // Set N Cols
+    public void setNCol(int nCol){
+        this.nCol = nCol;
     }
     // Get Element
     public double getElmt(int i, int j){
@@ -67,9 +84,18 @@ public class Matrix {
     // Read Matrix from Console
     public void readMatrix(){
         Scanner sc = new Scanner(System.in);
-        for(int i = 0; i < this.nRow; i++){
-            for(int j = 0; j < this.nCol; j++){
+        for(int i = 0; i < nRow; i++){
+            for(int j = 0; j < nCol; j++){
                 this.tab[i][j] = sc.nextInt();;
+            }
+        }
+
+        if (nRow == 0 && nCol == 0){
+            while (tab[nRow][0] != -999){
+                nRow++;
+            }
+            while (tab[0][nCol] != -999){
+                nCol++;
             }
         }
     }
