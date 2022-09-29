@@ -1,32 +1,29 @@
 package algeo01.application;
 
-import java.util.*;
+import java.util.Scanner;
 
-import algeo01.function.Determinant;
-import algeo01.function.*;
-
-public class Main {
+public class SPLApp {
     public static void main(String[] args) {
         // Available menus
         final String[] menus = new String[]{
-                "Sistem Persamaan Linear",
-                "Determinan",
-                "Matriks Balikan",
-                "Interpolasi Polinom",
-                "Interpolasi Bicubic",
-                "Regresi Linier Berganda",
-                "Keluar",
+                "Metode Eliminasi Gauss",
+                "Metode Eliminasi Gauss-Jordan",
+                "Metode Matriks Balikan",
+                "Kaidah Cramer",
+                "Kembali"
         };
 
         // Display menu
-        System.out.println("MENU");
+        System.out.println("MENU SISTEM PERSAMAAN LINEAR");
         for (int i = 0; i < menus.length; i++){
             System.out.println((i + 1) + ". " + menus[i]);
         }
+
         // Asking for user input
         int selectedMenu = 0;
         String strSelectedMenu;
         Scanner input = new Scanner(System.in);
+
         // Input validation
         boolean isInputInteger = false, isInputAvail = false;
         while (!isInputAvail || !isInputInteger) {
@@ -48,29 +45,20 @@ public class Main {
         // Calling Another Application
         switch (selectedMenu) {
             case 1:
-                SPLApp.main(null);
+                // Call GaussApp
                 break;
             case 2:
-                Determinant.main(args);
-                // Call DeterminanApp
+                // Call GaussJordanApp
                 break;
             case 3:
-
-                // Call MatrikBalikanApp
+                // Call MatriksBalikanApp
                 break;
             case 4:
-                // Call InterpolasoPolimomApp
+                // Call KaidahCramerApp
                 break;
             case 5:
-                // Call Interpolasi Bicubic
-                break;
-            case 6:
-                // Call Regresi Linear Berganda
-                break;
-            case 7:
-                // Exit JVM
-                System.out.println("Program dihentikan");
-                System.exit(0);
+                // Back
+                Main.main(null);
                 break;
         }
     }
