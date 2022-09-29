@@ -70,12 +70,11 @@ public class Determinant {
         }
     }
 
-    System.out.println("Matriks yang diinputkan");
+    System.out.println("Matriks yang diinput");
     display(matrix, a, a);
 
-		System.out.print("Determinant "
-						+ "of the matrix is : "
-						+ det(matrix, a));
+		System.out.print(det(matrix, a)+"\n");
+
 	input.close();
 	}
 }
