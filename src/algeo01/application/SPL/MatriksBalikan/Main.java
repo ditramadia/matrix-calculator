@@ -103,6 +103,13 @@ public class Main {
         // isFeasible?
         boolean hasSolution = nVar < nPers;
 
+        
+
+        // spl algorithm
+        for (int i=0; i<m.getNRow(); i++){
+
+        }
+
         /*
         if (m.getNRow() != m.getNCol()) {
             System.out.println("Matriks tidak dapat dibalikan");

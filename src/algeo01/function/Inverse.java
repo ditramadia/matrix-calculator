@@ -45,7 +45,7 @@ public class Inverse {
 
         if (matrix.length == 2){
             inv = inv2(matrix);
-
+            
             return inv;
         }
 
@@ -60,20 +60,20 @@ public class Inverse {
         double [][] inv = new double [matrix.length][matrix.length];
         double [][] temp;
         temp=matrix;
-        inv[0][0]= -temp[1][1];
-        inv[0][1]= temp[0][1];
-        inv[1][0]= temp[1][0];
-        inv[1][1]= -temp[0][0];
+        inv[0][0]= temp[1][1]/Determinant.det(matrix, matrix.length);
+        inv[0][1]= -temp[0][1]/Determinant.det(matrix, matrix.length);
+        inv[1][0]= -temp[1][0]/Determinant.det(matrix, matrix.length);
+        inv[1][1]= temp[0][0]/Determinant.det(matrix, matrix.length);
         return inv;
     }
 
     public static void main(String[] args) {
         // initialize matrix
         Matrix m = new Matrix(2,2);
-        m.setElmt(0, 0, 4);
-        m.setElmt(0, 1, 3);
-        m.setElmt(1, 0, 3);
-        m.setElmt(1, 1, 2);
+        m.setElmt(0, 0, 5);
+        m.setElmt(0, 1, 4);
+        m.setElmt(1, 0, 0);
+        m.setElmt(1, 1, 1);
         m.displayMatrix();
 
         // initialize result
@@ -85,16 +85,17 @@ public class Inverse {
         System.out.println("============");
         mRes.displayMatrix();
 
-        /*
+        
         // inverse
-        if (m.getNRow() !=2){
-        mRes.setTab(inv(m.getTab()));
+        /* 
+        if (m.getNRow() ==2){
+        mRes.setTab(inv2(m.getTab()));
         mRes.displayMatrix();}
         else{
-            mRes.setTab(inv2(m.getTab()));
+            mRes.setTab(inv(m.getTab()));
             mRes.displayMatrix();
         }
-         */
+        */
 
         // Dit, ini masih salah, cobain geura
     }
