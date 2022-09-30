@@ -49,6 +49,16 @@ public class Inverse {
         }
         return inv;
     }
+    public static double [][] inv2(double [][] matrix){
+        double [][] inv = new double [matrix.length][matrix.length];
+        double [][] temp;
+        temp=matrix;
+        inv[0][0]=temp[1][1];
+        inv[0][1]=-temp[0][1];
+        inv[1][0]=-temp[1][0];
+        inv[1][1]=temp[0][0];
+        return inv;
+    }
 
     public static void main(String[] args) {
         // initialize matrix
@@ -69,8 +79,13 @@ public class Inverse {
         System.out.println("============");
 
         // inverse
+        if (m.getNRow() !=2){
         mRes.setTab(inv(m.getTab()));
-        mRes.displayMatrix();
+        mRes.displayMatrix();}
+        else{
+            mRes.setTab(inv2(m.getTab()));
+            mRes.displayMatrix();
+        }
 
         // Dit, ini masih salah, cobain geura
     }
