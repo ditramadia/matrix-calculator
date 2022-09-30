@@ -45,13 +45,13 @@ public class Main {
         // Calling Another Application
         switch (selectedMenu) {
             case 1:
-                // Call GaussApp
+                algeo01.application.SPL.Gauss.Main.main(null);
                 break;
             case 2:
                 // Call GaussJordanApp
                 break;
             case 3:
-                // Call MatriksBalikanApp
+                algeo01.application.SPL.MatriksBalikan.Main.main(null);
                 break;
             case 4:
                 // Call KaidahCramerApp

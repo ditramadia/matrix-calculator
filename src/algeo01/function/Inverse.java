@@ -1,9 +1,11 @@
 package algeo01.function;
 
 
+import algeo01.data.Matrix;
+
 public class Inverse {
-    static Double [][] cofactor (Double matrix [][], int i, int j){
-        Double [][] temp = new Double [matrix.length-1][matrix.length-1];
+    static double [][] cofactor (double matrix [][], int i, int j){
+        double [][] temp = new double [matrix.length-1][matrix.length-1];
         int x = 0;
         int y = 0;
         for (int a = 0; a < matrix.length; a++){
@@ -22,8 +24,8 @@ public class Inverse {
         return temp;
     }
 
-    static Double[][] adjoint(Double[][] matrix){
-        Double[][] adj = new Double[matrix.length][matrix.length];
+    static double[][] adjoint(double[][] matrix){
+        double[][] adj = new double[matrix.length][matrix.length];
         if (matrix.length == 1){
             adj[0][0] = 1.0;
             return adj;
@@ -37,14 +39,34 @@ public class Inverse {
         }
         return adj;
     }
-    public static Double [][] inv(Double [][] matrix){
-        Double [][] inv = new Double [matrix.length][matrix.length];
-        Double [][] adj = adjoint(matrix);
+    public static double [][] inv(double [][] matrix){
+        double [][] inv = new double [matrix.length][matrix.length];
+        double [][] adj = adjoint(matrix);
         for (int i = 0; i<matrix.length; i++){
             for (int j = 0; j<matrix.length; j++){
                 inv [i][j] = 1/Determinant.det(matrix, matrix.length)*adj[i][j];
             }
         }
         return inv;
+    }
+
+    public static void main(String[] args) {
+        // initialize matrix
+        Matrix m = new Matrix(2,2);
+        m.setElmt(0, 0, 4);
+        m.setElmt(0, 1, 3);
+        m.setElmt(1, 0, 3);
+        m.setElmt(1, 1, 2);
+        m.displayMatrix();
+
+        // initialize result
+        Matrix mRes = new Matrix(2,2);
+        System.out.println("============");
+
+        // inverse
+        mRes.setTab(inv(m.getTab()));
+        mRes.displayMatrix();
+
+        // Dit, ini masih salah, cobain geura
     }
 }

@@ -7,9 +7,6 @@ import algeo01.data.Matrix;
 import java.util.Scanner;
 
 public class Main {
-    /**
-     * @param args
-     */
     public static void main(String[] args) {
         // Available menus
         final String[] menus = new String[]{
@@ -19,7 +16,7 @@ public class Main {
 
         // Display menu
         System.out.println("Pilih sumber masukan (input)");
-        for (int i = 0; i < menus.length; i++){
+        for (int i = 0; i < menus.length; i++) {
             System.out.println((i + 1) + ". " + menus[i]);
         }
 
@@ -34,85 +31,112 @@ public class Main {
             System.out.print("Pilih masukan: ");
             strSelectedMenu = input.nextLine();
             // Input must be an integer
-            try{
+            try {
                 selectedMenu = Integer.parseInt(strSelectedMenu);
                 isInputInteger = true;
 
                 // Input must be available
                 isInputAvail = (0 < selectedMenu && selectedMenu <= menus.length) ? true : false;
-            } catch(NumberFormatException e) {}
-            if(!isInputAvail || !isInputInteger){
+            } catch (NumberFormatException e) {
+            }
+            if (!isInputAvail || !isInputInteger) {
                 System.out.println("Masukan tidak tersedia");
             }
         }
 
         // Calling Another Application
-        Matrix m,a,b;
+        int nVar = 0, nPers = 0;
+        Matrix m, a, b;
         m = new Matrix();
         a = new Matrix();
         b = new Matrix();
 
         switch (selectedMenu) {
             case 1:
-            int row,col;
-            System.out.print("jumlah baris: ");
-            row = input.nextInt();
-            System.out.print("jumlah kolom: ");
-            col = input.nextInt();
-            m = new Matrix(row,col);
-            a = new Matrix(row,1);
-            b = new Matrix(row,1);
-            System.out.print("Masukkan matrix persamaan: ");
-            for (int i=0; i<row; i++) {
-                for (int j=0; j<col; j++) {
-                    m.setElmt(i, j, input.nextDouble());;
-                }
-            }
-            System.out.print("Masukkan matrix hasil persamaan: ");
-            for (int i=0; i<row; i++){
-                a.setElmt(i, 0, input.nextDouble());
-            }
+                // input m
+                System.out.print("Masukkan banyaknya variabel: ");
+                nVar = input.nextInt();
+                m.setNCol(nVar);
+                System.out.print("Masukkan banyaknya variabel: ");
+                nPers = input.nextInt();
+                m.setNRow(nPers);
+                System.out.println("Masukkan matriks persamaan: ");
+                m.readMatrix();
 
+                //input b
+                b.setNRow(nPers);
+                b.setNCol(1);
+                System.out.println("Masukkan matriks hasil: ");
+                b.readMatrix();
+
+                /*
+                int row, col;
+                System.out.print("jumlah baris: ");
+                row = input.nextInt();
+                System.out.print("jumlah kolom: ");
+                col = input.nextInt();
+                m = new Matrix(row, col);
+                a = new Matrix(row, 1);
+                b = new Matrix(row, 1);
+                System.out.print("Masukkan matrix persamaan: ");
+                for (int i = 0; i < row; i++) {
+                    for (int j = 0; j < col; j++) {
+                        m.setElmt(i, j, input.nextDouble());
+                        ;
+                    }
+                }
+                System.out.print("Masukkan matrix hasil persamaan: ");
+                for (int i = 0; i < row; i++) {
+                    a.setElmt(i, 0, input.nextDouble());
+                }
+                */
                 break;
             case 2:
                 // input from file
+                System.out.println("Not available");
                 break;
         }
 
-        if (m.getNRow()!=m.getNCol()) {
+        // is Matrix has inverse?
+        boolean hasInverse = m.isSquare();
+
+        // isFeasible?
+        boolean hasSolution = nVar < nPers;
+
+        /*
+        if (m.getNRow() != m.getNCol()) {
             System.out.println("Matriks tidak dapat dibalikan");
         } else {
             m.displayMatrix();
             a.displayMatrix();
         }
+         */
 
-        System.out.println("======================");
-        Double mi [][];
-        Double mtemp[][];
-        mtemp = new Double [m.getNRow()][m.getNCol()];
-        // mi = new Double [m.getNRow()][m.getNCol()];
-        for (int i=0;i<m.getNRow();i++){
-            for (int j=0; j<m.getNCol();j++){
-                mtemp[i][j]=m.getElmt(i, j);
+        /*
+        double mi[][];
+        double mtemp[][];
+        mtemp = new double[m.getNRow()][m.getNCol()];
+        for (int i = 0; i < m.getNRow(); i++) {
+            for (int j = 0; j < m.getNCol(); j++) {
+                mtemp[i][j] = m.getElmt(i, j);
             }
         }
-        mi=Inverse.inv(mtemp);
+        mi = Inverse.inv(mtemp);
 
-        for (int i=0; i<m.getNRow();i++){
-            Double temp=0.0;
-            for (int j=0; j<m.getNCol();j++){
-                temp += mi[i][j]*a.getElmt(j,0);
+        for (int i = 0; i < m.getNRow(); i++) {
+            double temp = 0.0;
+            for (int j = 0; j < m.getNCol(); j++) {
+                temp += mi[i][j] * a.getElmt(j, 0);
             }
             b.setElmt(i, 0, temp);
         }
+        
+         */
         //MATRIX B DONE TINGGAL DI PRINT
 
 
-        }
-        
-
-    
-    
-    
     }
+
+
+}
 

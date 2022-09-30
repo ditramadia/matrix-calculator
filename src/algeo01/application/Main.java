@@ -48,14 +48,12 @@ public class Main {
         // Calling Another Application
         switch (selectedMenu) {
             case 1:
-                SPLApp.main(null);
+                algeo01.application.SPL.Main.main(null);
                 break;
             case 2:
-                Determinant.main(args);
-                // Call DeterminanApp
+                algeo01.application.Determinant.Main.main(null);
                 break;
             case 3:
-
                 // Call MatrikBalikanApp
                 break;
             case 4:

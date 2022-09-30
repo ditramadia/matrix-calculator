@@ -2,13 +2,10 @@ package algeo01.application.SPL.Gauss;
 
 import algeo01.data.Matrix;
 
-import java.awt.*;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) {
         // Available menus
         final String[] menus = new String[]{
                 "Console",
@@ -83,9 +80,6 @@ public class Main {
                 */
                  break;
         }
-
-        // Decides if problem has many solutions
-        boolean hasManySolutions = nVar > nPers;
 
         // Gauss Elimination
         int solutionStatus = algeo01.function.GaussElimination.gaussElimination(m);

@@ -39,6 +39,7 @@ public class Matrix {
     public Matrix(Matrix M) {
         this(M.tab);
     }
+
     // Create Matrix
     public Matrix() {
         this.tab = new double[50][50];
@@ -55,18 +56,22 @@ public class Matrix {
     public int getNRow() {
         return this.nRow;
     }
+
     // Set N Rows
     public void setNRow(int nRow) {
         this.nRow = nRow;
     }
+
     // Get N Cols
     public int getNCol() {
         return this.nCol;
     }
+
     // Set N Cols
     public void setNCol(int nCol) {
         this.nCol = nCol;
     }
+
     // Get Element
     public double getElmt(int i, int j) {
         return this.tab[i][j];
@@ -87,6 +92,15 @@ public class Matrix {
         this.tab[rowIdx] = row;
     }
 
+    // Get Tab
+    public double[][] getTab() {
+        return this.tab;
+    }
+
+    public void setTab(double[][] val) {
+        this.tab = val;
+    }
+
     // Input Output Methods
     // Read Matrix from File
     public void readMatrix(File file) throws FileNotFoundException {
@@ -94,10 +108,10 @@ public class Matrix {
         nRow = 0;
         nCol = 0;
         // Pre-read
-        while (sc.hasNextLine()){
+        while (sc.hasNextLine()) {
             nRow++;
             Scanner colReader = new Scanner(sc.nextLine());
-            while(colReader.hasNextInt()){
+            while (colReader.hasNextInt()) {
                 nCol++;
             }
         }
@@ -105,20 +119,20 @@ public class Matrix {
 
         // Read the data
         sc = new Scanner(file);
-        for(int i = 0; i < nRow; i++){
-            for(int j = 0; j < nCol; j++){
-                if(sc.hasNextInt()){
+        for (int i = 0; i < nRow; i++) {
+            for (int j = 0; j < nCol; j++) {
+                if (sc.hasNextInt()) {
                     tab[i][j] = sc.nextInt();
                 }
             }
             sc.close();
         }
 
-        if (nRow == 0 && nCol == 0){
-            while (tab[nRow][0] != -999){
+        if (nRow == 0 && nCol == 0) {
+            while (tab[nRow][0] != -999) {
                 nRow++;
             }
-            while (tab[0][nCol] != -999){
+            while (tab[0][nCol] != -999) {
                 nCol++;
             }
         }
@@ -129,8 +143,7 @@ public class Matrix {
         Scanner sc = new Scanner(System.in);
         for (int i = 0; i < nRow; i++) {
             for (int j = 0; j < nCol; j++) {
-                this.tab[i][j] = sc.nextInt();
-                ;
+                this.tab[i][j] = sc.nextDouble();
             }
         }
 

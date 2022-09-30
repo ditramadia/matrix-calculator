@@ -1,8 +1,10 @@
 package algeo01.function;
+import algeo01.data.Matrix;
+
 import java.util.*;
 public class Determinant {
 
-	static void getCof(Double matrix[][], Double temp[][],int p, int q, int n)
+	static public void getCof(double matrix[][], double temp[][],int p, int q, int n)
 	{
 		int i = 0, j = 0;
 		for (int row = 0; row < n; row++) {
@@ -17,7 +19,7 @@ public class Determinant {
 			}
 		}
 	}
-	static Double det(Double matrix[][], int a)
+	static public double det(double matrix[][], int a)
 	{
 		Double D = 0.0;
 
@@ -26,7 +28,7 @@ public class Determinant {
 			return matrix[0][0];
 
 		// nyimpen kofaktor
-		Double  temp[][] = new Double[a][a];
+		double  temp[][] = new double[a][a];
 
 		int s = 1;
         // s= sign 1/-1
@@ -40,41 +42,5 @@ public class Determinant {
 		}
 
 		return D;
-	}
-
-	/* function for displaying the matrix */
-	static void display(Double matrix[][], int row, int col)
-	{
-		for (int i = 0; i < row; i++) {
-			for (int j = 0; j < col; j++)
-				System.out.print(matrix[i][j]+" ");
-
-			System.out.print("\n");
-		}
-	}
-
-	// Driver code
-	public static void main(String[] args)
-	{
-
-		Double matrix[][]
-    ;
-    int a;
-    Scanner input = new Scanner(System.in);
-    a=input.nextInt();
-    System.out.println("Masukkan nilai matriks");
-    matrix = new Double[a][a];
-    for (int i = 0; i < a; i++) {
-        for (int j = 0; j < a; j++) {
-            matrix[i][j] = input.nextDouble();
-        }
-    }
-
-    System.out.println("Matriks yang diinput");
-    display(matrix, a, a);
-
-		System.out.print(det(matrix, a)+"\n");
-
-	input.close();
 	}
 }
