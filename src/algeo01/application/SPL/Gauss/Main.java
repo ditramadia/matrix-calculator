@@ -42,26 +42,49 @@ public class Main {
         }
 
         // Calling Another Application
+        Matrix mPers = new Matrix();
+        Matrix mHasil = new Matrix();
         Matrix m = new Matrix();
         switch (selectedMenu) {
             case 1:
-                // System.out.print("Masukkan banyak baris matriks: ");
-                // m.setNRow(input.nextInt());
-                m.setNRow(3); // test
-                // System.out.print("Masukkan banyak kolom matriks: ");
-                // m.setNCol(input.nextInt());
-                m.setNCol(4); // test
-                // m.readMatrix();
-                double[] row1 = new double[]{1, 1, 1, 0}; // test
-                double[] row2 = new double[]{2, 3, 1, 1}; // test
-                double[] row3 = new double[]{3, 1, 2, 1}; // test
-                m.setRow(0, row1); // test
-                m.setRow(1, row2); // test
-                m.setRow(2, row3); // test
+                // Input mPers
+                System.out.print("Masukkan banyaknya variabel: ");
+                mPers.setNRow(input.nextInt());
+//                m.setNRow(3); // test
+                System.out.print("Masukkan banyaknya persamaan: ");
+                mPers.setNCol(input.nextInt());
+//                m.setNCol(4); // test
+                System.out.println("Masukkan matriks persamaan: ");
+                mPers.readMatrix();
+
+                // Input mHasil
+                mHasil.setNRow(mPers.getNRow());
+                mHasil.setNCol(1);
+                System.out.println("Masukkan matriks hasil: ");
+                mHasil.readMatrix();
+//                double[] row1 = new double[]{1, 1, 1, 0}; // test
+//                double[] row2 = new double[]{2, 3, 1, 1}; // test
+//                double[] row3 = new double[]{3, 1, 2, 1}; // test
+//                m.setRow(0, row1); // test
+//                m.setRow(1, row2); // test
+//                m.setRow(2, row3); // test
+
+                // Create m augmented matrix
+                m.setNRow(mPers.getNRow());
+                m.setNCol(mPers.getNCol() + mHasil.getNCol());
+                for(int i = 0; i < m.getNRow(); i++){
+                    for(int j = 0; j < m.getNCol(); j++){
+                        if(j == m.getNCol() - 1){
+                            m.setElmt(i, j, mHasil.getElmt(i, 0));
+                        }else{
+                            m.setElmt(i, j, mPers.getElmt(i, j));
+                        }
+                    }
+                }
                 break;
             case 2:
-                // input from file
-                break;
+                 // input from file
+                 break;
         }
         m.displayMatrix();
         System.out.println("======================");
@@ -143,6 +166,5 @@ public class Main {
         } else if (hasNoSolution) {
             System.out.println("Solusi tidak ada.");
         }
-
     }
 }
