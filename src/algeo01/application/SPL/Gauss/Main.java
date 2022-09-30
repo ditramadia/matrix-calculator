@@ -2,10 +2,13 @@ package algeo01.application.SPL.Gauss;
 
 import algeo01.data.Matrix;
 
+import java.awt.*;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         // Available menus
         final String[] menus = new String[]{
                 "Console",
@@ -70,6 +73,14 @@ public class Main {
                 break;
             case 2:
                  // input from file
+                System.out.println("Not available yet");
+                /*
+                FileDialog dialog = new FileDialog((Frame) null, "Pilih sebuah file");
+                dialog.setMode(FileDialog.LOAD);
+                dialog.setVisible(true);
+                File[] file = dialog.getFiles();
+                m.readMatrix(file[0]);
+                */
                  break;
         }
 
