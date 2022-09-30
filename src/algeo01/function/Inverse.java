@@ -52,15 +52,20 @@ public class Inverse {
 
     public static void main(String[] args) {
         // initialize matrix
-        Matrix m = new Matrix(2,2);
-        m.setElmt(0, 0, 4);
-        m.setElmt(0, 1, 3);
-        m.setElmt(1, 0, 3);
-        m.setElmt(1, 1, 2);
+        Matrix m = new Matrix(3,3);
+        m.setElmt(0, 0, 2);
+        m.setElmt(0, 1, 0);
+        m.setElmt(0, 2, 2);
+        m.setElmt(1, 0, 0);
+        m.setElmt(1, 1, 4);
+        m.setElmt(1, 2, 2);
+        m.setElmt(2, 0, 2);
+        m.setElmt(2, 1, 2);
+        m.setElmt(2, 2, 2);
         m.displayMatrix();
 
         // initialize result
-        Matrix mRes = new Matrix(2,2);
+        Matrix mRes = new Matrix(3,3);
         System.out.println("============");
 
         // inverse
