@@ -111,6 +111,7 @@ public class Matrix {
                     tab[i][j] = sc.nextInt();
                 }
             }
+            sc.close();
         }
 
         if (nRow == 0 && nCol == 0){
