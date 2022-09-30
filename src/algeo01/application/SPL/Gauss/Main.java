@@ -2,10 +2,13 @@ package algeo01.application.SPL.Gauss;
 
 import algeo01.data.Matrix;
 
+import java.awt.*;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         // Available menus
         final String[] menus = new String[]{
                 "Console",
@@ -42,72 +45,69 @@ public class Main {
         }
 
         // Calling Another Application
+        int nVar = 0;
+        int nPers = 0;
+        Matrix mPers = new Matrix();
+        Matrix mHasil = new Matrix();
         Matrix m = new Matrix();
         switch (selectedMenu) {
             case 1:
-                // System.out.print("Masukkan banyak baris matriks: ");
-                // m.setNRow(input.nextInt());
-                m.setNRow(3); // test
-                // System.out.print("Masukkan banyak kolom matriks: ");
-                // m.setNCol(input.nextInt());
-                m.setNCol(4); // test
-                // m.readMatrix();
-                double[] row1 = new double[]{0, 2, 1, 4}; // test
-                double[] row2 = new double[]{1, 1, 2, 6}; // test
-                double[] row3 = new double[]{2, 1, 1, 7}; // test
-                m.setRow(0, row1); // test
-                m.setRow(1, row2); // test
-                m.setRow(2, row3); // test
+                // Input mPers
+                System.out.print("Masukkan banyaknya variabel: ");
+                nVar = input.nextInt();
+                mPers.setNRow(nVar);
+                System.out.print("Masukkan banyaknya persamaan: ");
+                nPers = input.nextInt();
+                mPers.setNCol(nPers);
+                System.out.println("Masukkan matriks persamaan: ");
+                mPers.readMatrix();
+
+                // Input mHasil
+                mHasil.setNRow(nPers);
+                mHasil.setNCol(1);
+                System.out.println("Masukkan matriks hasil: ");
+                mHasil.readMatrix();
+
+                // Create m augmented matrix
+                m.mergeToRight(mPers, mHasil);
                 break;
             case 2:
-                // input from file
-                break;
+                 // input from file
+                System.out.println("Not available yet");
+                /*
+                FileDialog dialog = new FileDialog((Frame) null, "Pilih sebuah file");
+                dialog.setMode(FileDialog.LOAD);
+                dialog.setVisible(true);
+                File[] file = dialog.getFiles();
+                m.readMatrix(file[0]);
+                */
+                 break;
         }
-        m.displayMatrix();
-        System.out.println("======================");
 
-        for (int i = 0; i < m.getNCol() - 1; i++) {
-            for (int j = 0; j < m.getNRow(); j++) {
-                // Transform diagonal element
-                if (i == j) {
-                    // Transform diagonal element not equal 0
-                    if (m.getElmt(i, j) == 0) {
-                        int nonZeroIdx = i + 1;
-                        while (m.getElmt(i, j) == 0 && nonZeroIdx < m.getNRow()) {
-                            if (m.getElmt(nonZeroIdx, j) != 0) {
-                                algeo01.function.SwapRows.swap(m, i, nonZeroIdx);
-                            }
-                            nonZeroIdx++;
-                        }
-                        if (m.getElmt(nonZeroIdx, j) == 0) {
-                            System.out.println("Tidak dapat diselesaikan");
-                            break;
-                        }
-                    }
-                    // Tranforms to 1
-                    if (m.getElmt(i, j) != 1) {
-                        double multiplier = 1 / m.getElmt(i, j);
-                        algeo01.function.MultplyRowByConst.mulRowByConst(m, i, multiplier);
-                    }
-                }
+        // Decides if problem has many solutions
+        boolean hasManySolutions = nVar > nPers;
 
-                // Transform non diagonal element
-                if (i > j){
-                    // Transform to 0
-                    double multiplier = m.getElmt(i, j) > 0 ? m.getElmt(i, j) : -(m.getElmt(i,j));
-                    if (m.getElmt(i, j) != 0){
-                        if (m.getElmt(i, j) > 0){
-                            algeo01.function.SubtractRowByRow.subRowByRow(m, i, algeo01.function.MultplyRowByConst.RetMulRowByConst(m, j, multiplier));
-                        } else {
-                            algeo01.function.AddRowByRow.addRowByRow(m, i, algeo01.function.MultplyRowByConst.RetMulRowByConst(m, j, multiplier));
-                        }
-                    }
-                }
-            }
+        // Gauss Elimination
+        int solutionStatus = algeo01.function.GaussElimination.gaussElimination(m);
+
+        // Output Branches
+        if(solutionStatus == 0){
+            System.out.println("Program error");
+        } else if (solutionStatus == 1) {
+            // Display result matrix
+            System.out.println("Matrix hasil eliminasi Gauss:");
             m.displayMatrix();
-            System.out.println("======================");
+            double[] result = new double[nVar];
+            // Display result
+            System.out.println("Solusi SPL:");
+            result = algeo01.function.RowEchelonResult.rowEchRes(m);
+            for(int i = 0; i < result.length; i++){
+                System.out.printf("x_" + (i + 1)  + " = %.2f\n", result[i]);
+            }
+        } else if (solutionStatus == 2) {
+            System.out.println("Solusi banyak/tidak hingga.");
+        } else if (solutionStatus == 3) {
+            System.out.println("Solusi tidak ada.");
         }
-//        m.displayMatrix();
-//        System.out.println("======================");
     }
 }
