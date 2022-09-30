@@ -42,6 +42,8 @@ public class Main {
         }
 
         // Calling Another Application
+        int nVar = 0;
+        int nPers = 0;
         Matrix mPers = new Matrix();
         Matrix mHasil = new Matrix();
         Matrix m = new Matrix();
@@ -49,16 +51,18 @@ public class Main {
             case 1:
                 // Input mPers
                 System.out.print("Masukkan banyaknya variabel: ");
-                mPers.setNRow(input.nextInt());
+                nVar = input.nextInt();
+                mPers.setNRow(nVar);
 //                m.setNRow(3); // test
                 System.out.print("Masukkan banyaknya persamaan: ");
-                mPers.setNCol(input.nextInt());
-//                m.setNCol(4); // test
+                nPers = input.nextInt();
+                mPers.setNCol(nPers);
+//                m.setNCol(3); // test
                 System.out.println("Masukkan matriks persamaan: ");
                 mPers.readMatrix();
 
                 // Input mHasil
-                mHasil.setNRow(mPers.getNRow());
+                mHasil.setNRow(nPers);
                 mHasil.setNCol(1);
                 System.out.println("Masukkan matriks hasil: ");
                 mHasil.readMatrix();
@@ -70,25 +74,14 @@ public class Main {
 //                m.setRow(2, row3); // test
 
                 // Create m augmented matrix
-                m.setNRow(mPers.getNRow());
-                m.setNCol(mPers.getNCol() + mHasil.getNCol());
-                for(int i = 0; i < m.getNRow(); i++){
-                    for(int j = 0; j < m.getNCol(); j++){
-                        if(j == m.getNCol() - 1){
-                            m.setElmt(i, j, mHasil.getElmt(i, 0));
-                        }else{
-                            m.setElmt(i, j, mPers.getElmt(i, j));
-                        }
-                    }
-                }
+                m.mergeToRight(mPers, mHasil);
                 break;
             case 2:
                  // input from file
                  break;
         }
-        m.displayMatrix();
-        System.out.println("======================");
 
+        /*
         // Decides if problem has many solutions
         boolean hasManySolutions = m.getNCol() > m.getNRow() + 1;
 
@@ -126,8 +119,6 @@ public class Main {
                     }
                 }
             }
-            m.displayMatrix();
-            System.out.println("======================");
         }
 
         // Decides if problem has many solutions
@@ -166,5 +157,6 @@ public class Main {
         } else if (hasNoSolution) {
             System.out.println("Solusi tidak ada.");
         }
+        */
     }
 }

@@ -214,10 +214,22 @@ public class Matrix {
         }
         return result;
     }
-    // Swap Rows
-    public void swap(int row1, int row2){
-        double[] temp = getRow(row1);
-        setRow(row1, getRow(row2));
-        setRow(row2, temp);
+
+    // Merge Matrix Methods
+    // Merge matrix to the right
+    public void mergeToRight(Matrix M1, Matrix M2){
+        // Matrix result = new Matrix(M1.getNRow(), M1.getNCol() + M2.getNCol());
+        this.setNRow(M1.getNRow());
+        this.setNCol(M1.getNCol() + M2.getNCol());
+        for(int i = 0; i < M1.getNRow(); i++){
+            for(int j = 0; j < this.getNCol(); j++){
+                this.setElmt(i, j, M1.getElmt(i, j));
+            }
+        }
+        for(int i = 0; i < M2.getNRow(); i++){
+            for(int j = 0; j < M2.getNCol(); j++){
+                this.setElmt(i, M1.getNCol() + j, M2.getElmt(i, j));
+            }
+        }
     }
 }
