@@ -42,6 +42,13 @@ public class Inverse {
     public static double [][] inv(double [][] matrix){
         double [][] inv = new double [matrix.length][matrix.length];
         double [][] adj = adjoint(matrix);
+
+        if (matrix.length == 2){
+            inv = inv2(matrix);
+
+            return inv;
+        }
+
         for (int i = 0; i<matrix.length; i++){
             for (int j = 0; j<matrix.length; j++){
                 inv [i][j] = 1/Determinant.det(matrix, matrix.length)*adj[i][j];
@@ -53,31 +60,32 @@ public class Inverse {
         double [][] inv = new double [matrix.length][matrix.length];
         double [][] temp;
         temp=matrix;
-        inv[0][0]=temp[1][1];
-        inv[0][1]=-temp[0][1];
-        inv[1][0]=-temp[1][0];
-        inv[1][1]=temp[0][0];
+        inv[0][0]= -temp[1][1];
+        inv[0][1]= temp[0][1];
+        inv[1][0]= temp[1][0];
+        inv[1][1]= -temp[0][0];
         return inv;
     }
 
     public static void main(String[] args) {
         // initialize matrix
-        Matrix m = new Matrix(3,3);
-        m.setElmt(0, 0, 2);
-        m.setElmt(0, 1, 0);
-        m.setElmt(0, 2, 2);
-        m.setElmt(1, 0, 0);
-        m.setElmt(1, 1, 4);
-        m.setElmt(1, 2, 2);
-        m.setElmt(2, 0, 2);
-        m.setElmt(2, 1, 2);
-        m.setElmt(2, 2, 2);
+        Matrix m = new Matrix(2,2);
+        m.setElmt(0, 0, 4);
+        m.setElmt(0, 1, 3);
+        m.setElmt(1, 0, 3);
+        m.setElmt(1, 1, 2);
         m.displayMatrix();
 
         // initialize result
-        Matrix mRes = new Matrix(3,3);
-        System.out.println("============");
+        Matrix mRes = new Matrix(2,2);
 
+        // Inverse
+        mRes.setTab(inv(m.getTab()));
+
+        System.out.println("============");
+        mRes.displayMatrix();
+
+        /*
         // inverse
         if (m.getNRow() !=2){
         mRes.setTab(inv(m.getTab()));
@@ -86,6 +94,7 @@ public class Inverse {
             mRes.setTab(inv2(m.getTab()));
             mRes.displayMatrix();
         }
+         */
 
         // Dit, ini masih salah, cobain geura
     }
