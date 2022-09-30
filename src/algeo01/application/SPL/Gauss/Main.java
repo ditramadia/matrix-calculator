@@ -81,68 +81,16 @@ public class Main {
                  break;
         }
 
-        /*
         // Decides if problem has many solutions
-        boolean hasManySolutions = m.getNCol() > m.getNRow() + 1;
+        boolean hasManySolutions = nVar > nPers;
 
-        for (int i = 0; i < m.getNCol() - 1; i++) {
-            for (int j = 0; j < m.getNRow(); j++) {
-                // Transform diagonal element
-                if (i == j) {
-                    // Transform diagonal element not equal 0
-                    if (m.getElmt(i, j) == 0) {
-                        int nonZeroIdx = i + 1;
-                        while (m.getElmt(i, j) == 0 && nonZeroIdx < m.getNRow()) {
-                            if (m.getElmt(nonZeroIdx, j) != 0 && i != m.getNRow() - 1) {
-                                algeo01.function.SwapRows.swap(m, i, nonZeroIdx);
-                            }
-                            nonZeroIdx++;
-                        }
-                    }
-                    // Tranforms to 1
-                    if (m.getElmt(i, j) != 1 && m.getElmt(i, j) != 0) {
-                        double multiplier = 1 / m.getElmt(i, j);
-                        algeo01.function.MultplyRowByConst.mulRowByConst(m, i, multiplier);
-                    }
-                }
+        // Gauss Elimination
+        int solutionStatus = algeo01.function.GaussElimination.gaussElimination(m);
 
-                // Transform non diagonal element
-                if (i > j){
-                    // Transform to 0
-                    double multiplier = m.getElmt(i, j) > 0 ? m.getElmt(i, j) : -(m.getElmt(i,j));
-                    if (m.getElmt(i, j) != 0){
-                        if (m.getElmt(i, j) > 0){
-                            algeo01.function.SubtractRowByRow.subRowByRow(m, i, algeo01.function.MultplyRowByConst.RetMulRowByConst(m, j, multiplier));
-                        } else {
-                            algeo01.function.AddRowByRow.addRowByRow(m, i, algeo01.function.MultplyRowByConst.RetMulRowByConst(m, j, multiplier));
-                        }
-                    }
-                }
-            }
-        }
-
-        // Decides if problem has many solutions
-        if (m.getElmt(m.getNRow() - 1, m.getNCol() - 1) == 0){
-            hasManySolutions = true;
-            for(int j = 0; j < m.getNCol() - 1; j++){
-                if (m.getElmt(m.getNRow() - 1, j) != 0){
-                    hasManySolutions = false;
-                }
-            }
-        }
-
-        // Decides if problem has solution
-        boolean hasNoSolution = false;
-        if (m.getElmt(m.getNRow() - 1, m.getNCol() - 1) != 0){
-            hasNoSolution = true;
-            for(int j = 0; j < m.getNCol() - 1; j++){
-                if (m.getElmt(m.getNRow() - 1, j) != 0){
-                    hasNoSolution = false;
-                }
-            }
-        }
-
-        if (!hasNoSolution && !hasManySolutions) {
+        // Output branches
+        if(solutionStatus == 0){
+            System.out.println("Program error");
+        } else if (solutionStatus == 1) {
             double[] solution = new double[m.getNCol() - 1];
             for(int i = 0; i < solution.length; i++){
                 solution[solution.length - 1 - i] = m.getElmt(m.getNRow() - 1 - i, m.getNCol() - 1);
@@ -151,12 +99,10 @@ public class Main {
             for(int i = 0; i < solution.length; i++){
                 System.out.print(solution[i] + " ");
             }
-
-        } else if (hasManySolutions) {
+        } else if (solutionStatus == 2) {
             System.out.println("Solusi banyak/tidak hingga.");
-        } else if (hasNoSolution) {
+        } else if (solutionStatus == 3) {
             System.out.println("Solusi tidak ada.");
         }
-        */
     }
 }
