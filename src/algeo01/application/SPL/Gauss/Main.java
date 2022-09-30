@@ -53,11 +53,9 @@ public class Main {
                 System.out.print("Masukkan banyaknya variabel: ");
                 nVar = input.nextInt();
                 mPers.setNRow(nVar);
-//                m.setNRow(3); // test
                 System.out.print("Masukkan banyaknya persamaan: ");
                 nPers = input.nextInt();
                 mPers.setNCol(nPers);
-//                m.setNCol(3); // test
                 System.out.println("Masukkan matriks persamaan: ");
                 mPers.readMatrix();
 
@@ -66,12 +64,6 @@ public class Main {
                 mHasil.setNCol(1);
                 System.out.println("Masukkan matriks hasil: ");
                 mHasil.readMatrix();
-//                double[] row1 = new double[]{1, 1, 1, 0}; // test
-//                double[] row2 = new double[]{2, 3, 1, 1}; // test
-//                double[] row3 = new double[]{3, 1, 2, 1}; // test
-//                m.setRow(0, row1); // test
-//                m.setRow(1, row2); // test
-//                m.setRow(2, row3); // test
 
                 // Create m augmented matrix
                 m.mergeToRight(mPers, mHasil);
@@ -87,17 +79,19 @@ public class Main {
         // Gauss Elimination
         int solutionStatus = algeo01.function.GaussElimination.gaussElimination(m);
 
-        // Output branches
+        // Output Branches
         if(solutionStatus == 0){
             System.out.println("Program error");
         } else if (solutionStatus == 1) {
-            double[] solution = new double[m.getNCol() - 1];
-            for(int i = 0; i < solution.length; i++){
-                solution[solution.length - 1 - i] = m.getElmt(m.getNRow() - 1 - i, m.getNCol() - 1);
-            }
-            // Display solution
-            for(int i = 0; i < solution.length; i++){
-                System.out.print(solution[i] + " ");
+            // Display result matrix
+            System.out.println("Matrix hasil eliminasi Gauss:");
+            m.displayMatrix();
+            double[] result = new double[nVar];
+            // Display result
+            System.out.println("Solusi SPL:");
+            result = algeo01.function.RowEchelonResult.rowEchRes(m);
+            for(int i = 0; i < result.length; i++){
+                System.out.printf("x_" + (i + 1)  + " = %.2f\n", result[i]);
             }
         } else if (solutionStatus == 2) {
             System.out.println("Solusi banyak/tidak hingga.");

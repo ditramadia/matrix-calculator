@@ -103,7 +103,7 @@ public class Matrix {
     public void displayMatrix(){
         for(int i = 0; i < this.nRow; i++){
             for(int j = 0; j < this.nCol; j++){
-                System.out.print(this.tab[i][j]);
+                System.out.printf("%.2f",this.tab[i][j]);
                 System.out.print(" ");
             }
             System.out.println("");
