@@ -130,7 +130,7 @@ public class Main {
             }
             b.setElmt(i, 0, temp);
         }
-        
+
          */
         //MATRIX B DONE TINGGAL DI PRINT
 
