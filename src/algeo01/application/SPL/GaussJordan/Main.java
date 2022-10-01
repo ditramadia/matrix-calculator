@@ -81,6 +81,35 @@ public class Main {
                 break;
         }
 
+        // Gauss Jordan Elimination
+        int solutionStatus = algeo01.function.GaussJordanElimination.gaussJordanElimination(m);
 
+        // Output Branches
+        if(solutionStatus == 0){
+            System.out.println("Program error");
+        } else if (solutionStatus == 1) {
+            // Display result matrix
+            System.out.println("Matrix hasil eliminasi Gauss:");
+            m.displayMatrix();
+            double[] result = new double[nVar];
+            // Display result
+            System.out.println("Solusi SPL:");
+            result = algeo01.function.RowEchelonResult.rowEchRes(m);
+            for(int i = 0; i < result.length; i++){
+                System.out.printf("x_" + (i + 1)  + " = %.2f\n", result[i]);
+            }
+        } else if (solutionStatus == 2) {
+            // Display result matrix
+            System.out.println("Matrix hasil eliminasi Gauss:");
+            m.displayMatrix();
+            System.out.println("Solusi banyak/tidak hingga.");
+        } else if (solutionStatus == 3) {
+            // Display result matrix
+            System.out.println("Matrix hasil eliminasi Gauss:");
+            m.displayMatrix();
+            System.out.println("Solusi tidak ada.");
+        }
+
+        algeo01.application.Main.returnToMenu();
     }
 }

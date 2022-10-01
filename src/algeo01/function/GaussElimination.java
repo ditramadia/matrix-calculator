@@ -4,8 +4,8 @@ import algeo01.data.Matrix;
 
 public class GaussElimination {
     public static int gaussElimination(Matrix M){
-        for (int i = 0; i < M.getNCol() - 1; i++) {
-            for (int j = 0; j < M.getNRow(); j++) {
+        for (int j = 0; j < M.getNCol() - 1; j++) {
+            for (int i = 0; i < M.getNRow(); i++) {
                 // Transform diagonal element
                 if (i == j) {
                     // Transform diagonal element not equal 0
@@ -28,8 +28,7 @@ public class GaussElimination {
                 // Transform non diagonal element
                 if (i > j){
                     // Transforms to 0
-                    // double multiplier = M.getElmt(i, j) > 0 ? M.getElmt(i, j) : -(M.getElmt(i,j));
-                    double multiplier = M.getElmt(i, j);
+                    double multiplier = M.getElmt(i, j) > 0 ? M.getElmt(i, j) : -(M.getElmt(i,j));
                     if (M.getElmt(i, j) != 0){
                         if (M.getElmt(i, j) > 0){
                             algeo01.function.SubtractRowByRow.subRowByRow(M, i, algeo01.function.MultplyRowByConst.RetMulRowByConst(M, j, multiplier));

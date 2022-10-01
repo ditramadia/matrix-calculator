@@ -99,9 +99,17 @@ public class Main {
                 System.out.printf("x_" + (i + 1)  + " = %.2f\n", result[i]);
             }
         } else if (solutionStatus == 2) {
+            // Display result matrix
+            System.out.println("Matrix hasil eliminasi Gauss:");
+            m.displayMatrix();
             System.out.println("Solusi banyak/tidak hingga.");
         } else if (solutionStatus == 3) {
+            // Display result matrix
+            System.out.println("Matrix hasil eliminasi Gauss:");
+            m.displayMatrix();
             System.out.println("Solusi tidak ada.");
         }
+
+        algeo01.application.Main.returnToMenu();
     }
 }

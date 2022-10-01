@@ -76,5 +76,7 @@ public class Main {
         System.out.printf("%.2f\n", algeo01.function.Determinant.det(m.getTab(), m.getNRow()));
 
         input.close();
+
+        algeo01.application.Main.returnToMenu();
     }
 }
