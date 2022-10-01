@@ -1,7 +1,5 @@
 package algeo01.function;
-import algeo01.data.Matrix;
 
-import java.util.*;
 public class Determinant {
 
 	static public void getCof(double matrix[][], double temp[][],int p, int q, int n)
