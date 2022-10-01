@@ -2,6 +2,9 @@ package algeo01.application;
 
 import java.util.*;
 
+import algeo01.function.Determinant;
+import algeo01.function.*;
+
 public class Main {
     public static void main(String[] args) {
         // Available menus
@@ -48,7 +51,7 @@ public class Main {
                 algeo01.application.SPL.Main.main(null);
                 break;
             case 2:
-                // Call DeterminanApp
+                algeo01.application.Determinant.Main.main(null);
                 break;
             case 3:
                 // Call MatrikBalikanApp
@@ -64,9 +67,58 @@ public class Main {
                 break;
             case 7:
                 // Exit JVM
-                System.out.println("Program dihentikan");
-                System.exit(0);
+                algeo01.application.Main.exit();
                 break;
         }
+    }
+
+    public static void returnToMenu(){
+        // Available menus
+        final String[] menus = new String[]{
+                "Kembali Ke Menu",
+                "Keluar",
+        };
+
+        // Display menu
+        System.out.println("MENU");
+        for (int i = 0; i < menus.length; i++){
+            System.out.println((i + 1) + ". " + menus[i]);
+        }
+        // Asking for user input
+        int selectedMenu = 0;
+        String strSelectedMenu;
+        Scanner input = new Scanner(System.in);
+        // Input validation
+        boolean isInputInteger = false, isInputAvail = false;
+        while (!isInputAvail || !isInputInteger) {
+            System.out.print("Pilih menu: ");
+            strSelectedMenu = input.nextLine();
+            // Input must be an integer
+            try{
+                selectedMenu = Integer.parseInt(strSelectedMenu);
+                isInputInteger = true;
+
+                // Input must be available
+                isInputAvail = (0 < selectedMenu && selectedMenu <= menus.length) ? true : false;
+            } catch(NumberFormatException e) {}
+            if(!isInputAvail || !isInputInteger){
+                System.out.println("Menu tidak tersedia");
+            }
+        }
+
+        // Calling Another Application
+        switch (selectedMenu) {
+            case 1:
+                algeo01.application.Main.main(null);
+                break;
+            case 2:
+                algeo01.application.Main.exit();
+                break;
+        }
+    }
+
+    public static void exit(){
+        System.out.println("Program dihentikan");
+        System.exit(0);
     }
 }

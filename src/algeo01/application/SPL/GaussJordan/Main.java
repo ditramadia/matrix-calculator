@@ -1,4 +1,4 @@
-package algeo01.application.SPL.Gauss;
+package algeo01.application.SPL.GaussJordan;
 
 import algeo01.data.Matrix;
 
@@ -69,7 +69,7 @@ public class Main {
                 m.mergeToRight(mPers, mHasil);
                 break;
             case 2:
-                 // input from file
+                // input from file
                 System.out.println("Not available yet");
                 /*
                 FileDialog dialog = new FileDialog((Frame) null, "Pilih sebuah file");
@@ -78,11 +78,11 @@ public class Main {
                 File[] file = dialog.getFiles();
                 m.readMatrix(file[0]);
                 */
-                 break;
+                break;
         }
 
-        // Gauss Elimination
-        int solutionStatus = algeo01.function.GaussElimination.gaussElimination(m);
+        // Gauss Jordan Elimination
+        int solutionStatus = algeo01.function.GaussJordanElimination.gaussJordanElimination(m);
 
         // Output Branches
         if(solutionStatus == 0){
