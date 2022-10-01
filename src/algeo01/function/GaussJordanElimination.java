@@ -2,8 +2,8 @@ package algeo01.function;
 
 import algeo01.data.Matrix;
 
-public class GaussElimination {
-    public static int gaussElimination(Matrix M){
+public class GaussJordanElimination {
+    public static int gaussJordanElimination(Matrix M){
         for (int i = 0; i < M.getNCol() - 1; i++) {
             for (int j = 0; j < M.getNRow(); j++) {
                 // Transform diagonal element
@@ -28,13 +28,20 @@ public class GaussElimination {
                 // Transform non diagonal element
                 if (i > j){
                     // Transforms to 0
-                    // double multiplier = M.getElmt(i, j) > 0 ? M.getElmt(i, j) : -(M.getElmt(i,j));
-                    double multiplier = M.getElmt(i, j);
+                    double multiplier = M.getElmt(i, j) > 0 ? M.getElmt(i, j) : -(M.getElmt(i,j));
                     if (M.getElmt(i, j) != 0){
                         if (M.getElmt(i, j) > 0){
                             algeo01.function.SubtractRowByRow.subRowByRow(M, i, algeo01.function.MultplyRowByConst.RetMulRowByConst(M, j, multiplier));
                         } else {
                             algeo01.function.AddRowByRow.addRowByRow(M, i, algeo01.function.MultplyRowByConst.RetMulRowByConst(M, j, multiplier));
+                        }
+                    }
+                } else {
+                    // Transforms to 0
+                    double multiplier = M.getElmt(i, j) > 0 ? M.getElmt(i, j) : -(M.getElmt(i, j));
+                    if(M.getElmt(i, j) != 0){
+                        if(M.getElmt(i, j) > 0){
+
                         }
                     }
                 }
