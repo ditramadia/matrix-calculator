@@ -103,8 +103,11 @@ public class Main {
         // isFeasible?
         boolean hasSolution = nVar < nPers;
 
+<<<<<<< HEAD
         
 
+=======
+>>>>>>> master
         // spl algorithm
         for (int i=0; i<m.getNRow(); i++){
 
