@@ -116,8 +116,6 @@ public class Inverse {
         System.out.println("============");
         mRes.displayMatrix();
         return mRes;
-
-
         // inverse
         /* 
         if (m.getNRow() ==2){
