@@ -48,22 +48,26 @@ public class Main {
         // Calling Another Application
         switch (selectedMenu) {
             case 1:
+                // Call SPL
                 algeo01.application.SPL.Main.main(null);
                 break;
             case 2:
+                // Call Determinant App
                 algeo01.application.Determinant.Main.main(null);
                 break;
             case 3:
-                // Call MatrikBalikanApp
+                // Call Inverse App
+                algeo01.application.inverse.Main.main(null);
                 break;
             case 4:
-                // Call InterpolasoPolimomApp
+                // Call InterpolasiPolimomApp
                 break;
             case 5:
                 // Call Interpolasi Bicubic
                 break;
             case 6:
                 // Call Regresi Linear Berganda
+                algeo01.application.linearRegression.Main.main(null);
                 break;
             case 7:
                 // Exit JVM

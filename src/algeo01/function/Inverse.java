@@ -1,7 +1,6 @@
 package algeo01.function;
 
 
-
 import algeo01.data.Matrix;
 
 public class Inverse {
