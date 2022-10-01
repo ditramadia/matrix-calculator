@@ -54,10 +54,10 @@ public class Main {
                 algeo01.application.Determinant.Main.main(null);
                 break;
             case 3:
-                // Call MatrikBalikanApp
+                algeo01.application.inverse.Main.main(null);
                 break;
             case 4:
-                // Call InterpolasoPolimomApp
+                // Call InterpolasiPolimomApp
                 break;
             case 5:
                 // Call Interpolasi Bicubic
