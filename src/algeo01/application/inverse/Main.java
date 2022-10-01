@@ -2,6 +2,8 @@ package algeo01.application.inverse;
 
 import algeo01.data.Matrix;
 
+import algeo01.function.Inverse;
+
 import java.util.Scanner;
 
 public class Main {
@@ -71,13 +73,14 @@ public class Main {
         if(m.isSquare() && algeo01.function.Determinant.det(m.getTab(), m.getNRow()) != 0){
             // initialize result
             Matrix mRes = new Matrix(m.getNRow(), m.getNCol());
-            // Inverse
-            mRes.setTab(algeo01.function.Inverse.inv(m.getTab()));
-            // Display result
+            // display input
             System.out.println("Matriks yang diinput: ");
             m.displayMatrix();
-            System.out.println("Inverse matriks: ");
-            mRes.displayMatrix();
+            // calculate inverse
+            /*mRes = Inverse.inversem(m);
+            mRes.displayMatrix();*/
+            Inverse.master(m);
+            // kalau mau ubah bentuk outputnya ubahnya di inverse.java cari fungsi master
         }else{
             System.out.println("Matriks tidak memiliki balikan.");
         }

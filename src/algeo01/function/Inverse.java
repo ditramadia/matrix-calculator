@@ -1,17 +1,18 @@
 package algeo01.function;
 
 
+import java.util.Scanner;
 import algeo01.data.Matrix;
 
 public class Inverse {
-    static double[][] cofactor(double matrix[][], int i, int j) {
+    /*static double[][] cofactor(double matrix[][], int i, int j) {
         double[][] temp = new double[matrix.length - 1][matrix.length - 1];
         int x = 0;
         int y = 0;
-        for (int a = 0; a < matrix.length; a++) {
-            for (int b = 0; b < matrix.length; b++) {
-                if (a != i && b != j) {
-                    temp[x][y] = matrix[a][b];
+        for (int k = 0; k < matrix.length; k++) {
+            for (int l = 0; l < matrix.length; l++) {
+                if (k != i && l != j) {
+                    temp[x][y] = matrix[k][l];
                     y++;
                     if (y == matrix.length - 1) {
                         y = 0;
@@ -24,6 +25,24 @@ public class Inverse {
 
         return temp;
     }
+    */
+    static public double[][] getCof(double matrix[][],int p, int q, int n)
+	{
+        double temp[][] = new double[n][n];
+		int i = 0, j = 0;
+		for (int row = 0; row < n; row++) {
+			for (int col = 0; col < n; col++) {
+				if (row != p && col != q) {
+					temp[i][j++] = matrix[row][col];
+					if (j == n - 1) {
+						j = 0;
+						i++;
+					}
+				}
+			}
+		}
+        return temp;
+	}
 
     static double[][] adjoint(double[][] matrix) {
         double[][] adj = new double[matrix.length][matrix.length];
@@ -34,7 +53,7 @@ public class Inverse {
         int sign = 1;
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix.length; j++) {
-                adj[j][i] = (sign) * (Determinant.det(cofactor(matrix, i, j), matrix.length - 1));
+                adj[j][i] = (sign) * (Determinant.det(getCof(matrix, i, j, matrix.length ), matrix.length - 1));
                 sign = -sign;
             }
         }
@@ -71,25 +90,28 @@ public class Inverse {
         return inv;
     }
 
-    public static void main(String[] args) {
+    public static Matrix inversem(Matrix matrix) {
+        Matrix inverse = new Matrix(matrix.getNRow(), matrix.getNCol());
+        double[][] inv = inv(matrix.getTab());
+        inverse.setTab(inv);
+        return inverse;
+    }
+
+    public static void master(Matrix matrix) {
+        Scanner sc = new Scanner(System.in);
         // initialize matrix
-        Matrix m = new Matrix(3, 3);
-        m.setElmt(0, 0, 1);
-        m.setElmt(0, 1, 2);
-        m.setElmt(0, 2, 1);
-        m.setElmt(1, 0, 2);
-        m.setElmt(1, 1, 3);
-        m.setElmt(1, 2, 4);
-        m.setElmt(2, 0, 1);
-        m.setElmt(2, 1, 2);
-        m.setElmt(2, 2, 3);
-        m.displayMatrix();
+        Matrix m = new Matrix(matrix.getNRow(), matrix.getNCol());
+        for (int i=0; i<matrix.getNRow(); i++) {
+            for (int j=0; j<matrix.getNCol(); j++) {
+                m.setElmt(i, j, matrix.getElmt(i, j));
+            }
+        }
 
         // initialize result
         Matrix mRes = new Matrix(3, 3);
 
         // Inverse
-        mRes.setTab(inv(m.getTab()));
+        mRes=inversem(m);
 
         System.out.println("============");
         mRes.displayMatrix();
@@ -107,5 +129,20 @@ public class Inverse {
         */
 
         // Dit, ini masih salah, cobain geura
+    }
+
+    public static void main (String[] args) {
+        Matrix p=new Matrix(3,3);
+        p.setElmt(0,0,1);
+        p.setElmt(0,1,1);
+        p.setElmt(0,2,1);
+        p.setElmt(1,0,2);
+        p.setElmt(1,1,3);
+        p.setElmt(1,2,1);
+        p.setElmt(2,0,3);
+        p.setElmt(2,1,1);
+        p.setElmt(2,2,2);
+        master(p);
+
     }
 }
