@@ -70,6 +70,8 @@ public class Main {
                 algeo01.application.Main.exit();
                 break;
         }
+
+        input.close();
     }
 
     public static void returnToMenu(){
@@ -105,6 +107,8 @@ public class Main {
                 System.out.println("Menu tidak tersedia");
             }
         }
+
+        input.close();
 
         // Calling Another Application
         switch (selectedMenu) {

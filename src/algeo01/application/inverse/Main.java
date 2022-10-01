@@ -1,4 +1,4 @@
-package algeo01.application.Determinant;
+package algeo01.application.inverse;
 
 import algeo01.data.Matrix;
 
@@ -14,7 +14,7 @@ public class Main {
 
         // Display menu
         System.out.println("Pilih sumber masukan (input)");
-        for (int i = 0; i < menus.length; i++) {
+        for (int i = 0; i < menus.length; i++){
             System.out.println((i + 1) + ". " + menus[i]);
         }
 
@@ -29,15 +29,14 @@ public class Main {
             System.out.print("Pilih masukan: ");
             strSelectedMenu = input.nextLine();
             // Input must be an integer
-            try {
+            try{
                 selectedMenu = Integer.parseInt(strSelectedMenu);
                 isInputInteger = true;
 
                 // Input must be available
                 isInputAvail = (0 < selectedMenu && selectedMenu <= menus.length) ? true : false;
-            } catch (NumberFormatException e) {
-            }
-            if (!isInputAvail || !isInputInteger) {
+            } catch(NumberFormatException e) {}
+            if(!isInputAvail || !isInputInteger){
                 System.out.println("Masukan tidak tersedia");
             }
         }
@@ -68,13 +67,20 @@ public class Main {
                 break;
         }
 
-        // Display input Matrix
-        System.out.println("Matriks yang diinput: ");
-        m.displayMatrix();
-
-        // Display determinant
-        System.out.print("Determinan matriks: ");
-        System.out.printf("%.2f\n", algeo01.function.Determinant.det(m.getTab(), m.getNRow()));
+        // is Matrix has inverse
+        if(m.isSquare() && algeo01.function.Determinant.det(m.getTab(), m.getNRow()) != 0){
+            // initialize result
+            Matrix mRes = new Matrix(m.getNRow(), m.getNCol());
+            // Inverse
+            mRes.setTab(algeo01.function.Inverse.inv(m.getTab()));
+            // Display result
+            System.out.println("Matriks yang diinput: ");
+            m.displayMatrix();
+            System.out.println("Inverse matriks: ");
+            mRes.displayMatrix();
+        }else{
+            System.out.println("Matriks tidak memiliki balikan.");
+        }
 
         algeo01.application.Main.returnToMenu();
     }
