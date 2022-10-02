@@ -4,7 +4,11 @@ import algeo01.data.Matrix;
 
 import java.util.Scanner;
 
-public class main {
+
+public class main extends algeo01.function.BicubicInterpolator {
+    /**
+     * @param args
+     */
     public static void main(String[] args) {
         // Available menus
         final String[] menus = new String[]{
@@ -42,16 +46,30 @@ public class main {
         }
 
         // Calling Another Application
-        int nVar = 0, nSample = 0;
+        double x=0,y=0,hasil;
         Matrix m = new Matrix();
-        double[] x_k = new double[]{0, 0, 0};
+        double[][] awal = new double[4][4];
         switch (selectedMenu) {
             case 1:
-                
+                System.out.println("Masukkan matrix 4x4: ");
+                for (int i=0; i<4; i++){
+                    for (int j=0; j<4; j++){
+                        awal[i][j] = input.nextDouble();
+                    }
+                }
+                System.out.println("Masukkan nilai x: ");
+                x = input.nextDouble();
+                System.out.println("Masukkan nilai y: ");
+                y = input.nextDouble();
+                break;
+            case 2:
+                 // input from file
+                System.out.println("Not available yet");
+                break;
+            
+            
+            
 }
-}
-public static Matrix bicubicInterpolation(Matrix m,int n){
-    
-    return m;
+System.out.println("Hasil interpolasi: " + getValue(awal, x, y));
 }
 }
