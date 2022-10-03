@@ -75,7 +75,7 @@ public class Main {
         // Display determinant
         System.out.print("Determinan matriks: ");
         System.out.printf("%.2f\n", algeo01.function.Determinant.det(m.getTab(), m.getNRow()));
-
+        
         algeo01.application.Main.returnToMenu();
     }
 }
