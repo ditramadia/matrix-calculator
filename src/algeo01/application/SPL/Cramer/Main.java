@@ -2,20 +2,23 @@ package algeo01.application.SPL.Cramer;
 
 import java.util.Scanner;
 
+import algeo01.data.Matrix;
 import algeo01.function.Determinant;
 
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("input banyak baris = ");
+        System.out.print("input banyak baris: ");
         int n = sc.nextInt();
-        System.out.print("input banyak kolom = ");
+        System.out.print("input banyak kolom: ");
         int m = sc.nextInt();
         // String str = sc.next();
         // System.out.println("jumlah baris = n, jumlah kolom n+1");
         while(n != m-1){
             System.out.println("Inputan Salah !!\nUntuk kaidah Cramer, banyak kolom = banyak baris + 1 karena menggunakan Determinan dalam penghitungannya");
+            System.out.print("input banyak baris: ");
             n = sc.nextInt();
+            System.out.print("input banyak kolom: ");
             m = sc.nextInt();
         }
         // System.out.println(str);
@@ -53,10 +56,10 @@ public class Main {
 
         double[] hasil_x;
         hasil_x = new double[n];
+        double[][] temp;
+        temp = new double[n][n];
 
         for(int i=0; i<n; i++){
-            double[][] temp;
-            temp = new double[n][n];
             for(int j=0; j<n; j++){
                 for(int k=0; k<n; k++){
                     if(j == i) temp[j][k] = b[j][0];
@@ -66,6 +69,11 @@ public class Main {
             }
             
         }
+        Matrix mTemp = new Matrix();
+        mTemp.setTab(temp);
+        System.out.println("Matrix hasil kaidah Cramer:");
+        mTemp.displayMatrix();
+        System.out.println("Solusi SPL:");
         for(int i=0; i<n; i++){
             System.out.println("x_" + i + " = " + hasil_x[i]);
         }

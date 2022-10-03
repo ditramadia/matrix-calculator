@@ -9,7 +9,7 @@ import java.lang.Math.*;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Masukkan banyak titik = ");
+        System.out.print("Masukkan banyak titik: ");
         int n = sc.nextInt();
         double[][] arrinput;
         arrinput = new double[n][2];
@@ -53,7 +53,7 @@ public class Main {
         }
 
         double ans = 0;
-        System.out.print("Masukkan titik yang dicari = ");
+        System.out.print("Masukkan titik yang dicari: ");
         double x_pertanyaan = sc.nextDouble();
 
         for(int i=0; i<n; i++){

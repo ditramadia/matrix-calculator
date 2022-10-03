@@ -114,7 +114,6 @@ public class Inverse {
         // Inverse
         mRes=inversem(m);
 
-        System.out.println("============");
         mRes.displayMatrix();
         return mRes;
         // inverse
