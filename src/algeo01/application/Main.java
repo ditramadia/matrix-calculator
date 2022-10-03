@@ -5,7 +5,7 @@ import java.util.*;
 import algeo01.function.Determinant;
 import algeo01.function.*;
 
-public class Main {
+public class Main{
     public static void main(String[] args) {
         // Available menus
         final String[] menus = new String[]{
@@ -65,6 +65,7 @@ public class Main {
                 break;
             case 5:
                 // Call Interpolasi Bicubic
+                algeo01.application.BicubicInterpolation.Main.main(null);
                 break;
             case 6:
                 // Call Regresi Linear Berganda
