@@ -85,11 +85,9 @@ public class Main {
         boolean hasInverse = m.isSquare();
 
         // isFeasible?
-
         boolean hasSolution = nVar <= nPers;
 
         double temp;
-
 
         if (!(hasInverse && hasSolution)) {
             System.out.println("Matriks tidak dapat dibalikan");
@@ -111,9 +109,7 @@ public class Main {
             
         }
 
-        algeo01.application.Main.returnToMenu();
+        algeo01.application.Main.returnToMenu(3);
     }
-
-
 }
 
