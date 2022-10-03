@@ -4,11 +4,10 @@ import algeo01.data.Matrix;
 
 import java.util.Scanner;
 
+import static algeo01.function.BicubicInterpolator.getValue;
 
-public class Main extends algeo01.function.BicubicInterpolator {
-    /**
-     * @param args
-     */
+
+public class Main {
     public static void main(String[] args) {
         // Available menus
         final String[] menus = new String[]{
@@ -18,7 +17,7 @@ public class Main extends algeo01.function.BicubicInterpolator {
 
         // Display menu
         System.out.println("Pilih sumber masukan (input)");
-        for (int i = 0; i < menus.length; i++){
+        for (int i = 0; i < menus.length; i++) {
             System.out.println((i + 1) + ". " + menus[i]);
         }
 
@@ -33,27 +32,28 @@ public class Main extends algeo01.function.BicubicInterpolator {
             System.out.print("Pilih masukan: ");
             strSelectedMenu = input.nextLine();
             // Input must be an integer
-            try{
+            try {
                 selectedMenu = Integer.parseInt(strSelectedMenu);
                 isInputInteger = true;
 
                 // Input must be available
                 isInputAvail = (0 < selectedMenu && selectedMenu <= menus.length) ? true : false;
-            } catch(NumberFormatException e) {}
-            if(!isInputAvail || !isInputInteger){
+            } catch (NumberFormatException e) {
+            }
+            if (!isInputAvail || !isInputInteger) {
                 System.out.println("Masukan tidak tersedia");
             }
         }
 
         // Calling Another Application
-        double x=0,y=0,hasil;
+        double x = 0, y = 0, hasil;
         Matrix m = new Matrix();
         double[][] awal = new double[4][4];
         switch (selectedMenu) {
             case 1:
                 System.out.println("Masukkan matrix 4x4: ");
-                for (int i=0; i<4; i++){
-                    for (int j=0; j<4; j++){
+                for (int i = 0; i < 4; i++) {
+                    for (int j = 0; j < 4; j++) {
                         awal[i][j] = input.nextDouble();
                     }
                 }
@@ -63,13 +63,12 @@ public class Main extends algeo01.function.BicubicInterpolator {
                 y = input.nextDouble();
                 break;
             case 2:
-                 // input from file
+                // input from file
                 System.out.println("Not available yet");
                 break;
-            
-            
-            
-}
-System.out.println("Hasil interpolasi: " + getValue(awal, x, y));
-}
+
+
+        }
+        System.out.println("Hasil interpolasi: " + getValue(awal, x, y));
+    }
 }
