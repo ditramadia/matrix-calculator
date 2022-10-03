@@ -13,7 +13,7 @@ public class Main {
         };
 
         // Display menu
-        System.out.println("Regresi Linier Berganda");
+        System.out.println("REGRESI LINIER BERGANDA");
         System.out.println("Pilih sumber masukan (input)");
         for (int i = 0; i < menus.length; i++){
             System.out.println((i + 1) + ". " + menus[i]);
@@ -88,13 +88,13 @@ public class Main {
         } else if (solutionStatus == 1) {
             // Display result
             double[] result = new double[nVar];
-            System.out.println("Solusi SPL:");
+            System.out.println("Solusi Regresi:");
             result = algeo01.function.RowEchelonResult.rowEchRes(equation);
             double y = result[0];
             for(int i = 0; i < nVar; i++){
                 y += result[i + 1] * x_k[i];
             }
-            System.out.printf("%.5f\n", y);
+            System.out.printf("f = %.5f\n", y);
         } else if (solutionStatus == 2) {
             // Display result matrix
             System.out.println("Matrix hasil eliminasi Gauss:");
