@@ -1,7 +1,7 @@
 # Algeo01-21001
 - --
 ## Tubes Algeo 1
-Tubes 1 of Aljabar Linier dan Geometri (IF2123). A library linear algebra using Java. This library contains source files to solve determinant, inverse, linear system equation such as interpolation and linear regression using various methods (Gauss, Gauss-Jordan, Inverse, and Cramer). 
+Tubes 1 of Aljabar Linier dan Geometri (IF2123). A library of linear algebra using Java. This library contain source files to solve determinant, inverse, linear system equation such as interpolation and linear regression using various methods (Gauss, Gauss-Jordan, Inverse, and Cramer). 
 ## Contributors (Mawar Hitam)
 - 13521001 Angger Ilham Amanullah <br/>
 - 13521019 Ditra Rizqa Amadia <br/>
@@ -16,7 +16,7 @@ Tubes 1 of Aljabar Linier dan Geometri (IF2123). A library linear algebra using 
   - Cofactor
   - Elementary Row Operation
 - Matrix inverse calculator using:
-  - Adjoin
+  - Adjoint
   - Elementary Row Operation
 - Polynomial Interpolation
 - Bicubic Interpolation
