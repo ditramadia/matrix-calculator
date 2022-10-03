@@ -1,7 +1,5 @@
 package algeo01.data;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Matrix {
@@ -96,65 +94,19 @@ public class Matrix {
     public double[][] getTab() {
         return this.tab;
     }
-
     public void setTab(double[][] val) {
         this.tab = val;
     }
-
     // Input Output Methods
-    // Read Matrix from File
-    public void readMatrix(File file) throws FileNotFoundException {
-        Scanner sc = new Scanner(file);
-        nRow = 0;
-        nCol = 0;
-        // Pre-read
-        while (sc.hasNextLine()) {
-            nRow++;
-            Scanner colReader = new Scanner(sc.nextLine());
-            while (colReader.hasNextInt()) {
-                nCol++;
-            }
-        }
-        sc.close();
-
-        // Read the data
-        sc = new Scanner(file);
-        for (int i = 0; i < nRow; i++) {
-            for (int j = 0; j < nCol; j++) {
-                if (sc.hasNextInt()) {
-                    tab[i][j] = sc.nextInt();
-                }
-            }
-            sc.close();
-        }
-
-        if (nRow == 0 && nCol == 0) {
-            while (tab[nRow][0] != -999) {
-                nRow++;
-            }
-            while (tab[0][nCol] != -999) {
-                nCol++;
-            }
-        }
-    }
-
     // Read Matrix from Console
     public void readMatrix() {
         Scanner sc = new Scanner(System.in);
-        for (int i = 0; i < nRow; i++) {
-            for (int j = 0; j < nCol; j++) {
+        for (int i = 0; i < this.nRow; i++) {
+            for (int j = 0; j < this.nCol; j++) {
                 this.tab[i][j] = sc.nextDouble();
             }
         }
-
-        if (nRow == 0 && nCol == 0) {
-            while (tab[nRow][0] != -999) {
-                nRow++;
-            }
-            while (tab[0][nCol] != -999) {
-                nCol++;
-            }
-        }
+        sc.close();
     }
 
     // Display Matrix

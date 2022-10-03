@@ -1,4 +1,4 @@
-package algeo01.application.SPL.Gauss;
+package algeo01.application.linearRegression;
 
 import algeo01.data.Matrix;
 
@@ -42,71 +42,67 @@ public class Main {
         }
 
         // Calling Another Application
-        int nVar = 0;
-        int nPers = 0;
-        Matrix mPers = new Matrix();
-        Matrix mHasil = new Matrix();
+        int nVar = 0, nSample = 0;
         Matrix m = new Matrix();
+        double[] x_k = new double[]{0, 0, 0};
         switch (selectedMenu) {
             case 1:
-                // Input mPers
+                // input nVar
                 System.out.print("Masukkan banyaknya variabel: ");
                 nVar = input.nextInt();
-                mPers.setNRow(nVar);
-                System.out.print("Masukkan banyaknya persamaan: ");
-                nPers = input.nextInt();
-                mPers.setNCol(nPers);
-                System.out.println("Masukkan matriks persamaan: ");
-                mPers.readMatrix();
+                m.setNCol(nVar + 1);
 
-                // Input mHasil
-                mHasil.setNRow(nPers);
-                mHasil.setNCol(1);
-                System.out.println("Masukkan matriks hasil: ");
-                mHasil.readMatrix();
+                // input nSample
+                System.out.print("Masukkan banyaknya sampel: ");
+                nSample = input.nextInt();
+                m.setNRow(nSample);
 
-                // Create m augmented matrix
-                m.mergeToRight(mPers, mHasil);
+                // input points
+                System.out.println("Masukkan sampel: ");
+                m.readMatrix();
+
+                // input x_k
+                System.out.println("Masukkan x yang dicari");
+                x_k = new double[nVar];
+                for(int i = 0; i < x_k.length; i++){
+                    x_k[i] = input.nextDouble();
+                }
+
                 break;
             case 2:
-                 // input from file
                 System.out.println("Not available yet");
-                /*
-                FileDialog dialog = new FileDialog((Frame) null, "Pilih sebuah file");
-                dialog.setMode(FileDialog.LOAD);
-                dialog.setVisible(true);
-                File[] file = dialog.getFiles();
-                m.readMatrix(file[0]);
-                */
-                 break;
+                algeo01.application.linearRegression.Main.main(null);
+                break;
         }
 
+        // Normal Estimation Equation
+        Matrix equation = algeo01.function.NormalEstimation.normalEstEq(m);
+
         // Gauss Elimination
-        int solutionStatus = algeo01.function.GaussElimination.gaussElimination(m);
+        int solutionStatus = algeo01.function.GaussElimination.gaussElimination(equation);
 
         // Output Branches
         if(solutionStatus == 0){
             System.out.println("Program error");
         } else if (solutionStatus == 1) {
-            // Display result matrix
-            System.out.println("Matrix hasil eliminasi Gauss:");
-            m.displayMatrix();
-            double[] result = new double[nVar];
             // Display result
+            double[] result = new double[nVar];
             System.out.println("Solusi SPL:");
-            result = algeo01.function.RowEchelonResult.rowEchRes(m);
-            for(int i = 0; i < result.length; i++){
-                System.out.printf("x_" + (i + 1)  + " = %.2f\n", result[i]);
+            result = algeo01.function.RowEchelonResult.rowEchRes(equation);
+            double y = result[0];
+            for(int i = 0; i < nVar; i++){
+                y += result[i + 1] * x_k[i];
             }
+            System.out.printf("%.5f\n", y);
         } else if (solutionStatus == 2) {
             // Display result matrix
             System.out.println("Matrix hasil eliminasi Gauss:");
-            m.displayMatrix();
+            equation.displayMatrix();
             System.out.println("Solusi banyak/tidak hingga.");
         } else if (solutionStatus == 3) {
             // Display result matrix
             System.out.println("Matrix hasil eliminasi Gauss:");
-            m.displayMatrix();
+            equation.displayMatrix();
             System.out.println("Solusi tidak ada.");
         }
 

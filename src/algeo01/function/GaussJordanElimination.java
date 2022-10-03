@@ -2,9 +2,10 @@ package algeo01.function;
 
 import algeo01.data.Matrix;
 
-public class GaussElimination {
-    public static int gaussElimination(Matrix M){
+public class GaussJordanElimination {
+    public static int gaussJordanElimination(Matrix M) {
         for (int j = 0; j < M.getNCol() - 1; j++) {
+            // Pre-read to get main 1
             for (int i = 0; i < M.getNRow(); i++) {
                 // Transform diagonal element
                 if (i == j) {
@@ -25,12 +26,17 @@ public class GaussElimination {
                     }
                 }
 
+
+            }
+
+            // Read to get non diagonal equals 0
+            for (int i = 0; i < M.getNRow(); i++) {
                 // Transform non diagonal element
-                if (i > j){
+                if (i != j) {
                     // Transforms to 0
-                    double multiplier = M.getElmt(i, j) > 0 ? M.getElmt(i, j) : -(M.getElmt(i,j));
-                    if (M.getElmt(i, j) != 0){
-                        if (M.getElmt(i, j) > 0){
+                    double multiplier = M.getElmt(i, j) > 0 ? M.getElmt(i, j) : -(M.getElmt(i, j));
+                    if (M.getElmt(i, j) != 0) {
+                        if (M.getElmt(i, j) > 0) {
                             algeo01.function.SubtractRowByRow.subRowByRow(M, i, algeo01.function.MultplyRowByConst.RetMulRowByConst(M, j, multiplier));
                         } else {
                             algeo01.function.AddRowByRow.addRowByRow(M, i, algeo01.function.MultplyRowByConst.RetMulRowByConst(M, j, multiplier));
@@ -42,10 +48,10 @@ public class GaussElimination {
 
         // Decides if problem has many solutions
         boolean hasManySolutions = false;
-        if (M.getElmt(M.getNRow() - 1, M.getNCol() - 1) == 0){
+        if (M.getElmt(M.getNRow() - 1, M.getNCol() - 1) == 0) {
             hasManySolutions = true;
-            for(int j = 0; j < M.getNCol() - 1; j++){
-                if (M.getElmt(M.getNRow() - 1, j) != 0){
+            for (int j = 0; j < M.getNCol() - 1; j++) {
+                if (M.getElmt(M.getNRow() - 1, j) != 0) {
                     hasManySolutions = false;
                 }
             }
@@ -53,22 +59,22 @@ public class GaussElimination {
 
         // Decides if problem has solution
         boolean hasNoSolution = false;
-        if (M.getElmt(M.getNRow() - 1, M.getNCol() - 1) != 0){
+        if (M.getElmt(M.getNRow() - 1, M.getNCol() - 1) != 0) {
             hasNoSolution = true;
-            for(int j = 0; j < M.getNCol() - 1; j++){
-                if (M.getElmt(M.getNRow() - 1, j) != 0){
+            for (int j = 0; j < M.getNCol() - 1; j++) {
+                if (M.getElmt(M.getNRow() - 1, j) != 0) {
                     hasNoSolution = false;
                 }
             }
         }
 
-        if(!hasManySolutions && !hasNoSolution){
+        if (!hasManySolutions && !hasNoSolution) {
             // Has unique solution
             return 1;
-        } else if (hasManySolutions){
+        } else if (hasManySolutions) {
             // Has many solution
             return 2;
-        } else if (hasNoSolution){
+        } else if (hasNoSolution) {
             // has no solution
             return 3;
         }
