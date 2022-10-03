@@ -1,7 +1,5 @@
 package algeo01.data;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Matrix {
@@ -96,11 +94,9 @@ public class Matrix {
     public double[][] getTab() {
         return this.tab;
     }
-
     public void setTab(double[][] val) {
         this.tab = val;
     }
-
     // Input Output Methods
     // Read Matrix from Console
     public void readMatrix() {

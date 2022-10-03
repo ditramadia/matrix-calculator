@@ -56,7 +56,7 @@ public class Main {
                 algeo01.application.SPL.MatriksBalikan.Main.main(null);
                 break;
             case 4:
-                // Call Kaidah Cramer App
+                algeo01.application.SPL.Cramer.Main.main(null);
                 break;
             case 5:
                 // Back

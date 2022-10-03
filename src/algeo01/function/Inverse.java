@@ -14,10 +14,12 @@ public class Inverse {
                     temp[x][y] = matrix[k][l];
                     y++;
                     if (y == matrix.length - 1) {
+
                         y = 0;
                         x++;
                     }
                 }
+
                 System.out.println("loop");
             }
         }
@@ -50,6 +52,7 @@ public class Inverse {
             return adj;
         }
         int sign = 1;
+
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix.length; j++) {
                 adj[j][i] = (sign) * (Determinant.det(getCof(matrix, i, j, matrix.length ), matrix.length - 1));
@@ -58,7 +61,6 @@ public class Inverse {
         }
         return adj;
     }
-
     public static double[][] inv(double[][] matrix) {
         double[][] inv = new double[matrix.length][matrix.length];
 
@@ -67,7 +69,6 @@ public class Inverse {
 
             return inv;
         }
-
         double[][] adj = adjoint(matrix);
 
         for (int i = 0; i < matrix.length; i++) {
@@ -111,7 +112,6 @@ public class Inverse {
         // Inverse
         mRes=inversem(m);
 
-        System.out.println("============");
         mRes.displayMatrix();
         return mRes;
 
