@@ -5,7 +5,7 @@ Tubes 1 of Aljabar Linier dan Geometri (IF2123). A library linear algebra using 
 ## Contributors (Mawar Hitam)
 - 13521001 Angger Ilham Amanullah <br/>
 - 13521019 Ditra Rizqa Amadia <br/>
-- 13521024 Radit Naufal Abiyyu <br/>
+- 13521024 Radit Naufal Abiyu <br/>
 ## Program Features
 - Linear system equation calculator using:
   - Gauss Elimination
