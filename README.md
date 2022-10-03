@@ -84,7 +84,7 @@ Tubes 1 of Aljabar Linier dan Geometri (IF2123). A library linear algebra using 
 ## Local Setup
 1. Clone this repository
 2. Go to src folder: ```/src/```
-2. Compile by running: ```javac -d ..\bin algeo01/*.java```
+2. Compile by running: ```javac -d ../bin/production/Algeo01-21001 algeo01/*.java```
 3. Go to bin folder: ```/bin/production/Algeo01-21001/```
 4. Run Main by running: ```java algeo01.application.Main```
 ## Technology Used
