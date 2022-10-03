@@ -61,6 +61,7 @@ public class Main {
                 break;
             case 4:
                 // Call InterpolasiPolimomApp
+                algeo01.application.InterpolasiPolinom.Main.main(null);
                 break;
             case 5:
                 // Call Interpolasi Bicubic

@@ -35,9 +35,10 @@ public class Main {
         //         System.out.print(" ");
         //     }
         //     System.out.println("");
-        double[][] a,b;
+        double[][] a;
         a = new double[n][n];
-        b = new double[n][1];
+        double[] b;
+        b = new double[n];
 
         for(int i=0; i<n;i++){
             for(int j=0; j<n; j++){
@@ -46,10 +47,11 @@ public class Main {
         }
 
         for(int i=0; i<n;i++){
-            b[i][0] = arr[i][n];
+            b[i]= arr[i][n];
         }
 
         double detutama = algeo01.function.Determinant.det(a,n);
+        System.out.println("Det utama = " + detutama);
 
         double[] hasil_x;
         hasil_x = new double[n];
@@ -59,13 +61,22 @@ public class Main {
             temp = new double[n][n];
             for(int j=0; j<n; j++){
                 for(int k=0; k<n; k++){
-                    if(j == i) temp[j][k] = b[j][0];
+                    if(k == i) temp[j][k] = b[j];
                     else temp[j][k] = a[j][k];
                 }
-                hasil_x[i] = algeo01.function.Determinant.det(temp,n) / detutama;
             }
-            
+            hasil_x[i] = algeo01.function.Determinant.det(temp,n) / detutama;
+            System.out.println("det temp = " + algeo01.function.Determinant.det(temp,n));
+            for(int l=0; l<n; l++){
+                for(int o=0; o<n; o++){
+                    System.out.print(temp[l][o] + " ");
+                }
+                System.out.println("");
+            }
+            System.out.println("");
+            System.out.println("");
         }
+
         for(int i=0; i<n; i++){
             System.out.println("x_" + i + " = " + hasil_x[i]);
         }
