@@ -13,6 +13,7 @@ public class Main {
         };
 
         // Display menu
+        System.out.println("DETERMINAN METODE KOFAKTOR");
         System.out.println("Pilih sumber masukan (input)");
         for (int i = 0; i < menus.length; i++) {
             System.out.println((i + 1) + ". " + menus[i]);
@@ -69,6 +70,6 @@ public class Main {
         System.out.print("Determinan matriks: ");
         System.out.printf("%.2f\n", algeo01.function.Determinant.det(m.getTab(), m.getNRow()));
         
-        algeo01.application.Main.returnToMenu();
+        algeo01.application.Main.returnToMenu(5);
     }
 }

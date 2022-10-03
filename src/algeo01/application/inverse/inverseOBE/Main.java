@@ -14,6 +14,7 @@ public class Main {
         };
 
         // Display menu
+        System.out.println("MATRIKS BALIKAN METODE OBE");
         System.out.println("Pilih sumber masukan (input)");
         for (int i = 0; i < menus.length; i++){
             System.out.println((i + 1) + ". " + menus[i]);
@@ -93,6 +94,6 @@ public class Main {
             System.out.println("Matriks tidak memiliki balikan.");
         }
 
-        algeo01.application.Main.returnToMenu();
+        algeo01.application.Main.returnToMenu(8);
     }
 }
