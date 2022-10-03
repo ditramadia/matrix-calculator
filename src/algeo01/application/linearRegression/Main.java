@@ -13,6 +13,7 @@ public class Main {
         };
 
         // Display menu
+        System.out.println("MENU REGRESI LINEAR BERGANDA");
         System.out.println("Pilih sumber masukan (input)");
         for (int i = 0; i < menus.length; i++){
             System.out.println((i + 1) + ". " + menus[i]);
