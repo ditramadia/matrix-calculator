@@ -15,7 +15,7 @@ public class Main {
         };
 
         // Display menu
-        System.out.println("Matriks Balikan metode Adjoin");
+        System.out.println("MATRIKS BALIKAN METODE ADJOIN");
         System.out.println("Pilih sumber masukan (input)");
         for (int i = 0; i < menus.length; i++){
             System.out.println((i + 1) + ". " + menus[i]);

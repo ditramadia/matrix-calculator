@@ -14,7 +14,7 @@ public class Main {
         };
 
         // Display menu
-        System.out.println("Matriks Balikan metode OBE");
+        System.out.println("MATRIKS BALIKAN METODE OBE");
         System.out.println("Pilih sumber masukan (input)");
         for (int i = 0; i < menus.length; i++){
             System.out.println((i + 1) + ". " + menus[i]);

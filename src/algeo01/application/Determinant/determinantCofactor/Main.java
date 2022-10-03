@@ -13,7 +13,7 @@ public class Main {
         };
 
         // Display menu
-        System.out.println("Determinan metode Kofaktor");
+        System.out.println("DETERMINAN METODE KOFAKTOR");
         System.out.println("Pilih sumber masukan (input)");
         for (int i = 0; i < menus.length; i++) {
             System.out.println((i + 1) + ". " + menus[i]);
