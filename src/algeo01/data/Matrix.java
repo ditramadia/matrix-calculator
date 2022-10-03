@@ -246,4 +246,13 @@ public class Matrix {
             }
         }
     }
+    public void unMergeRetRight() {
+        this.setNRow(this.getNRow());
+        for (int i = 0; i < this.getNRow(); i++) {
+            for (int j = this.getNCol() / 2; j < this.getNCol(); j++) {
+                this.setElmt(i, j - this.getNCol() / 2, this.getElmt(i, j));
+            }
+        }
+        this.setNCol(this.getNCol() / 2);
+    }
 }

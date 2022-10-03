@@ -4,29 +4,6 @@ package algeo01.function;
 import algeo01.data.Matrix;
 
 public class Inverse {
-    /*static double[][] cofactor(double matrix[][], int i, int j) {
-        double[][] temp = new double[matrix.length - 1][matrix.length - 1];
-        int x = 0;
-        int y = 0;
-        for (int k = 0; k < matrix.length; k++) {
-            for (int l = 0; l < matrix.length; l++) {
-                if (k != i && l != j) {
-                    temp[x][y] = matrix[k][l];
-                    y++;
-                    if (y == matrix.length - 1) {
-
-                        y = 0;
-                        x++;
-                    }
-                }
-
-                System.out.println("loop");
-            }
-        }
-
-        return temp;
-    }
-    */
     static public double[][] getCof(double matrix[][],int p, int q, int n)
 	{
         double temp[][] = new double[n][n];
@@ -112,22 +89,9 @@ public class Inverse {
         // Inverse
         mRes=inversem(m);
 
-        mRes.displayMatrix();
+        // mRes.displayMatrix();
         return mRes;
 
-
-        // inverse
-        /* 
-        if (m.getNRow() ==2){
-        mRes.setTab(inv2(m.getTab()));
-        mRes.displayMatrix();}
-        else{
-            mRes.setTab(inv(m.getTab()));
-            mRes.displayMatrix();
-        }
-        */
-
-        // Dit, ini masih salah, cobain geura
     }
 
     public static void main (String[] args) {

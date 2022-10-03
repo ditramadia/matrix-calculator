@@ -102,6 +102,7 @@ public class Main {
         else{
             System.out.println("Terdapat solusi banyak/tidak terhingga untuk persamaan ini");
         }
-        sc.close();
+
+        algeo01.application.Main.returnToMenu();
     }    
 }
