@@ -105,6 +105,6 @@ public class Main {
             System.out.println("Solusi tidak ada.");
         }
 
-        algeo01.application.Main.returnToMenu();
+        algeo01.application.Main.returnToMenu(2);
     }
 }

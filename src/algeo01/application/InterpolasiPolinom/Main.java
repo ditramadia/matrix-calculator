@@ -9,6 +9,7 @@ import java.lang.Math.*;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        System.out.print("Interpolasi Polinom : ");
         System.out.print("Masukkan banyak titik : ");
         int n = sc.nextInt();
         double[][] arrinput;
@@ -61,6 +62,7 @@ public class Main {
             ans += isi_a[i] * (Math.pow(x_pertanyaan,i));
         }
         System.out.println("f(" + x_pertanyaan + ") = " + ans);
-        sc.close();
+
+        algeo01.application.Main.returnToMenu(9);
     }
 }

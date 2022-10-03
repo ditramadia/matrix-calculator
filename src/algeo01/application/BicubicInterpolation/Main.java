@@ -16,6 +16,7 @@ public class Main {
         };
 
         // Display menu
+        System.out.println("Interpolasi Bicubic");
         System.out.println("Pilih sumber masukan (input)");
         for (int i = 0; i < menus.length; i++) {
             System.out.println((i + 1) + ". " + menus[i]);
@@ -70,5 +71,7 @@ public class Main {
 
         }
         System.out.println("Hasil interpolasi: " + getValue(awal, x, y));
+
+        algeo01.application.Main.returnToMenu(10);
     }
 }
