@@ -98,6 +98,7 @@ public class Main {
             // b.displayMatrix();
             // System.out.println("Matriks balikan:");
             mInv = Inverse.master(m);
+            mInv.displayMatrix();
 
             System.out.println("Solusi SPL:");
             for (int i = 0; i < nVar; i++) {

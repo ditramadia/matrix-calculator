@@ -2,10 +2,7 @@ package algeo01.application;
 
 import java.util.*;
 
-import algeo01.function.Determinant;
-import algeo01.function.*;
-
-public class Main{
+public class Main {
     public static void main(String[] args) {
         // Available menus
         final String[] menus = new String[]{
@@ -76,8 +73,6 @@ public class Main{
                 algeo01.application.Main.exit();
                 break;
         }
-
-        input.close();
     }
 
     public static void returnToMenu(){
