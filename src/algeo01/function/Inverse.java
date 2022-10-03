@@ -1,7 +1,6 @@
 package algeo01.function;
 
 
-import java.util.Scanner;
 import algeo01.data.Matrix;
 
 public class Inverse {
@@ -98,7 +97,6 @@ public class Inverse {
     }
 
     public static Matrix master(Matrix matrix) {
-        Scanner sc = new Scanner(System.in);
         // initialize matrix
         Matrix m = new Matrix(matrix.getNRow(), matrix.getNCol());
         for (int i=0; i<matrix.getNRow(); i++) {
@@ -116,6 +114,8 @@ public class Inverse {
         System.out.println("============");
         mRes.displayMatrix();
         return mRes;
+
+
         // inverse
         /* 
         if (m.getNRow() ==2){
