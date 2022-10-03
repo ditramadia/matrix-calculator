@@ -5,7 +5,7 @@ import algeo01.data.Matrix;
 import java.util.Scanner;
 
 
-public class main extends algeo01.function.BicubicInterpolator {
+public class Main extends algeo01.function.BicubicInterpolator {
     /**
      * @param args
      */

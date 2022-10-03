@@ -62,6 +62,7 @@ public class Main {
                 break;
             case 5:
                 // Call Interpolasi Bicubic
+                algeo01.application.BicubicInterpolation.Main.main(null);
                 break;
             case 6:
                 // Call Regresi Linear Berganda
