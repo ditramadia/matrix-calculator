@@ -53,18 +53,11 @@ public class Main {
                 m.setNCol(input.nextInt());
                 System.out.println("Masukkan matriks: ");
                 m.readMatrix();
-                input.close();
                 break;
             case 2:
                 // input from file
                 System.out.println("Not available yet");
-                /*
-                FileDialog dialog = new FileDialog((Frame) null, "Pilih sebuah file");
-                dialog.setMode(FileDialog.LOAD);
-                dialog.setVisible(true);
-                File[] file = dialog.getFiles();
-                m.readMatrix(file[0]);
-                */
+                algeo01.application.Determinant.determinantCofactor.Main.main(null);
                 break;
         }
 
