@@ -78,7 +78,17 @@ Tubes 1 of Aljabar Linier dan Geometri (IF2123). A library of linear algebra usi
 │           ├── SubtractRowByRow.java
 │           └── SwapRows.java 
 ├── test ------------------------------------------ Folder containing test files
-│   └── spl1.txt 
+│   ├── bic1.txt
+│   ├── det1.txt
+│   ├── det2.txt
+│   ├── inv1.txt
+│   ├── inv2.txt
+│   ├── inv3.txt
+│   ├── pol1.txt
+│   ├── reg1.txt
+│   ├── spl1.txt
+│   ├── spl2.txt
+│   └── spl3.txt  
 └── README.md
 ```
 ## Local Setup
