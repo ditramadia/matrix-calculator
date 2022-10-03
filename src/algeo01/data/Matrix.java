@@ -106,7 +106,6 @@ public class Matrix {
                 this.tab[i][j] = sc.nextDouble();
             }
         }
-        sc.close();
     }
 
     // Display Matrix

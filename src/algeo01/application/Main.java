@@ -82,6 +82,7 @@ public class Main {
     public static void returnToMenu(){
         // Available menus
         final String[] menus = new String[]{
+                "Coba lagi",
                 "Kembali Ke Menu",
                 "Keluar",
         };
@@ -113,14 +114,15 @@ public class Main {
             }
         }
 
-        input.close();
-
         // Calling Another Application
         switch (selectedMenu) {
             case 1:
-                algeo01.application.Main.main(null);
+                algeo01.application.SPL.Gauss.Main.main(null);
                 break;
             case 2:
+                algeo01.application.Main.main(null);
+                break;
+            case 3:
                 algeo01.application.Main.exit();
                 break;
         }

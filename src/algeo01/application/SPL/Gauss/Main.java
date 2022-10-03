@@ -13,6 +13,7 @@ public class Main {
         };
 
         // Display menu
+        System.out.println("SPL METODE ELIMINASI GAUSS");
         System.out.println("Pilih sumber masukan (input)");
         for (int i = 0; i < menus.length; i++){
             System.out.println((i + 1) + ". " + menus[i]);
@@ -71,13 +72,7 @@ public class Main {
             case 2:
                  // input from file
                 System.out.println("Not available yet");
-                /*
-                FileDialog dialog = new FileDialog((Frame) null, "Pilih sebuah file");
-                dialog.setMode(FileDialog.LOAD);
-                dialog.setVisible(true);
-                File[] file = dialog.getFiles();
-                m.readMatrix(file[0]);
-                */
+                algeo01.application.SPL.Gauss.Main.main(null);
                  break;
         }
 

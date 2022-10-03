@@ -9,11 +9,12 @@ import java.lang.Math.*;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Masukkan banyak titik = ");
+        System.out.print("Masukkan banyak titik : ");
         int n = sc.nextInt();
         double[][] arrinput;
         arrinput = new double[n][2];
 
+        System.out.println("Masukkan titik - titiknya :");
         for(int i=0; i<n; i++){
             for(int j=0; j<2; j++){
                 arrinput[i][j] = sc.nextDouble();
@@ -53,13 +54,13 @@ public class Main {
         }
 
         double ans = 0;
-        System.out.print("Masukkan titik yang dicari = ");
+        System.out.print("Masukkan titik yang dicari: ");
         double x_pertanyaan = sc.nextDouble();
 
         for(int i=0; i<n; i++){
             ans += isi_a[i] * (Math.pow(x_pertanyaan,i));
         }
-        System.out.println("hasilnya adalah " + ans);
+        System.out.println("f(" + x_pertanyaan + ") = " + ans);
         sc.close();
     }
 }
