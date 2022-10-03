@@ -1,14 +1,10 @@
-package algeo01.application.BicubicInterpolation;
+package algeo01.application.Determinant.determinantOBE;
 
 import algeo01.data.Matrix;
 
 import java.util.Scanner;
 
-
-public class Main extends algeo01.function.BicubicInterpolator {
-    /**
-     * @param args
-     */
+public class Main {
     public static void main(String[] args) {
         // Available menus
         final String[] menus = new String[]{
@@ -18,7 +14,7 @@ public class Main extends algeo01.function.BicubicInterpolator {
 
         // Display menu
         System.out.println("Pilih sumber masukan (input)");
-        for (int i = 0; i < menus.length; i++){
+        for (int i = 0; i < menus.length; i++) {
             System.out.println((i + 1) + ". " + menus[i]);
         }
 
@@ -33,43 +29,49 @@ public class Main extends algeo01.function.BicubicInterpolator {
             System.out.print("Pilih masukan: ");
             strSelectedMenu = input.nextLine();
             // Input must be an integer
-            try{
+            try {
                 selectedMenu = Integer.parseInt(strSelectedMenu);
                 isInputInteger = true;
 
                 // Input must be available
                 isInputAvail = (0 < selectedMenu && selectedMenu <= menus.length) ? true : false;
-            } catch(NumberFormatException e) {}
-            if(!isInputAvail || !isInputInteger){
+            } catch (NumberFormatException e) {
+            }
+            if (!isInputAvail || !isInputInteger) {
                 System.out.println("Masukan tidak tersedia");
             }
         }
 
         // Calling Another Application
-        double x=0,y=0,hasil;
         Matrix m = new Matrix();
-        double[][] awal = new double[4][4];
         switch (selectedMenu) {
             case 1:
-                System.out.println("Masukkan matrix 4x4: ");
-                for (int i=0; i<4; i++){
-                    for (int j=0; j<4; j++){
-                        awal[i][j] = input.nextDouble();
-                    }
-                }
-                System.out.println("Masukkan nilai x: ");
-                x = input.nextDouble();
-                System.out.println("Masukkan nilai y: ");
-                y = input.nextDouble();
+                // input m
+                System.out.print("Masukkan banyaknya baris: ");
+                m.setNRow(input.nextInt());
+                System.out.print("Masukkan banyaknya kolom: ");
+                m.setNCol(input.nextInt());
+                System.out.println("Masukkan matriks: ");
+                m.readMatrix();
                 break;
             case 2:
-                 // input from file
+                // input from file
                 System.out.println("Not available yet");
+                algeo01.application.Determinant.determinantOBE.Main.main(null);
                 break;
-            
-            
-            
-}
-System.out.println("Hasil interpolasi: " + getValue(awal, x, y));
-}
+        }
+
+        // Display input Matrix
+        System.out.println("Matriks yang diinput: ");
+        m.displayMatrix();
+
+        // Calculate Determinant using Gauss
+        double determinant = algeo01.function.DeterminantOBE.detOBE(m);
+        
+        // Display Determinant
+        System.out.print("Determinan matriks: ");
+        System.out.println(determinant);
+
+        algeo01.application.Main.returnToMenu();
+    }
 }

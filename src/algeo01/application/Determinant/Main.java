@@ -1,20 +1,19 @@
 package algeo01.application.Determinant;
 
-import algeo01.data.Matrix;
-
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         // Available menus
         final String[] menus = new String[]{
-                "Console",
-                "Text File",
+                "Metode Kofaktor",
+                "Metode Gauss",
+                "Kembali"
         };
 
         // Display menu
-        System.out.println("Pilih sumber masukan (input)");
-        for (int i = 0; i < menus.length; i++) {
+        System.out.println("MENU DETERMINAN");
+        for (int i = 0; i < menus.length; i++){
             System.out.println((i + 1) + ". " + menus[i]);
         }
 
@@ -26,56 +25,35 @@ public class Main {
         // Input validation
         boolean isInputInteger = false, isInputAvail = false;
         while (!isInputAvail || !isInputInteger) {
-            System.out.print("Pilih masukan: ");
+            System.out.print("Pilih menu: ");
             strSelectedMenu = input.nextLine();
             // Input must be an integer
-            try {
+            try{
                 selectedMenu = Integer.parseInt(strSelectedMenu);
                 isInputInteger = true;
 
                 // Input must be available
                 isInputAvail = (0 < selectedMenu && selectedMenu <= menus.length) ? true : false;
-            } catch (NumberFormatException e) {
-            }
-            if (!isInputAvail || !isInputInteger) {
-                System.out.println("Masukan tidak tersedia");
+            } catch(NumberFormatException e) {}
+            if(!isInputAvail || !isInputInteger){
+                System.out.println("Menu tidak tersedia");
             }
         }
 
         // Calling Another Application
-        Matrix m = new Matrix();
         switch (selectedMenu) {
             case 1:
-                // input m
-                System.out.print("Masukkan banyaknya baris: ");
-                m.setNRow(input.nextInt());
-                System.out.print("Masukkan banyaknya kolom: ");
-                m.setNCol(input.nextInt());
-                System.out.println("Masukkan matriks: ");
-                m.readMatrix();
-                input.close();
+                // Call Gauss App
+                algeo01.application.Determinant.determinantCofactor.Main.main(null);
                 break;
             case 2:
-                // input from file
-                System.out.println("Not available yet");
-                /*
-                FileDialog dialog = new FileDialog((Frame) null, "Pilih sebuah file");
-                dialog.setMode(FileDialog.LOAD);
-                dialog.setVisible(true);
-                File[] file = dialog.getFiles();
-                m.readMatrix(file[0]);
-                */
+                // Call Gauss Jordan App
+                algeo01.application.Determinant.determinantOBE.Main.main(null);
+                break;
+            case 5:
+                // Back
+                algeo01.application.Main.main(null);
                 break;
         }
-
-        // Display input Matrix
-        System.out.println("Matriks yang diinput: ");
-        m.displayMatrix();
-
-        // Display determinant
-        System.out.print("Determinan matriks: ");
-        System.out.printf("%.2f\n", algeo01.function.Determinant.det(m.getTab(), m.getNRow()));
-        
-        algeo01.application.Main.returnToMenu();
     }
 }

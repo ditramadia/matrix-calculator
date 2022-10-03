@@ -12,7 +12,7 @@ public class Main {
         };
 
         // Display menu
-        System.out.println("MENU SISTEM PERSAMAAN LINEAR");
+        System.out.println("MENU MATRIKS BALIKAN");
         for (int i = 0; i < menus.length; i++){
             System.out.println((i + 1) + ". " + menus[i]);
         }
